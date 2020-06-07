@@ -41,7 +41,9 @@ void alterar_produto(int codigo);
 void excluir_produto(int codigo);
 //  Vender produto
 float vender_produto(int codigo);
-//  Comprar produto
+//  Repor produto
+void repor_produto(int codigo);
+
 //  Funcao que limpa a lista de produto
 void formatar_lista(void);
 
@@ -116,6 +118,7 @@ void leitura_da_opcao(int op)
             vender_produto(verificador_de_produto());
             break;
         case(7):
+            repor_produto(verificador_de_produto());
             break;
         case(0):
             printf("Obrigado por utilizar este programa! \n");
@@ -272,7 +275,28 @@ float vender_produto(int codigo)
 
 }
 
-//  Comprar produto
+//  Funcao que repoe o produto, isto e, aumenta sua quantidade
+void repor_produto(int codigo)
+{
+    int quantidade;
+
+    if(codigo != -1)
+    {
+        printf("========REPOR======== \n");
+        printf("Quantidade para repor no estoque: ");
+        scanf("%d", &quantidade);
+        if(quantidade > 0)
+        {
+            produto[codigo].quantidade = produto[codigo].quantidade + quantidade;
+            printf("Reposicao concluida! \n");
+        }
+        else
+        {
+            printf("Quantidade invalida! \n");
+        }
+    }
+}
+
 //  Funcao que limpa a lista de produto
 void formatar_lista(void)
 {
