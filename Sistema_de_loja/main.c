@@ -17,6 +17,12 @@ Tipo_Produto produto[100];
 //  Variavel global do codigo
 int variavel_codigo = 1;
 
+//  Variaveis globais do usuario
+char nome[101] = "";
+char usuario[101] = "";
+char senha[101] = "";
+float capital;
+
 /*  Funcoes */
 //  Funcao que printa o menu
 void printar_menu(void);
@@ -47,6 +53,12 @@ void repor_produto(int codigo);
 void confirmar_formatacao(void);
 //  Funcao que limpa a lista de produto
 void formatar_lista(void);
+//  Login do usuario
+int login_do_usuario(void);
+//  Registrar usuario
+void registrar_usuario(void);
+//  Menu do login
+void menu_login(void);
 
 //  Funcao main
 int main()
@@ -55,6 +67,32 @@ int main()
 
     //  Formatando a lista antes do uso
     formatar_lista();
+
+    //  Loop do login
+    do
+    {
+        menu_login();
+        scanf("%d", &opcao);
+        setbuf(stdin, NULL);
+        system("cls");
+        switch(opcao)
+        {
+            case(1):
+                opcao = login_do_usuario();
+                break;
+            case(2):
+                registrar_usuario();
+                break;
+            case(0):
+                printf("Obrigado por utilizar este programa! \n");
+                return 0;
+                break;
+            default:
+                printf("Opcao invalida! \n");
+        }
+        system("pause");
+        system("cls");
+    }while(opcao != -1);
 
     //  Loop do programa
     do
@@ -93,6 +131,7 @@ void printar_menu(void)
     printf("6. Vender produto \n");
     printf("7. Repor produto \n");
     printf("8. Formatar lista \n");
+    printf("0. Fechar programa \n");
     printf("Opcoes: ");
 }
 
@@ -346,4 +385,57 @@ void formatar_lista(void)
         produto[i].preco = 0;
         produto[i].quantidade = 0;
     }
+}
+
+//  Funcao que faz o login do usuario
+int login_do_usuario(void)
+{
+    char user[101], pass[101];
+
+    printf("========LOGIN======== \n");
+    printf("Usuario: ");
+    fgets(user, 101, stdin);
+    setbuf(stdin, NULL);
+    printf("Senha: ");
+    scanf("%s", &pass[101]);
+    setbuf(stdin, NULL);
+
+    if(user[101] == usuario[101] && pass[101] == senha[101])
+    {
+        printf("Logado com sucesso! \n");
+        return -1;
+    }
+    else
+    {
+        printf("Usuario ou senha incorreta! \n");
+    }
+}
+
+//  Funcao que registra o usuario
+void registrar_usuario(void)
+{
+    printf("========REGISTRAR======== \n");
+    printf("Nome: ");
+    fgets(nome, 101, stdin);
+    setbuf(stdin, NULL);
+    printf("Usuario: ");
+    fgets(usuario, 101, NULL);
+    setbuf(stdin, NULL);
+    printf("Senha: ");
+    fgets(senha, 101, NULL);
+    setbuf(stdin, NULL);
+    printf("Digite seu capital inicial: ");
+    scanf("%f", &capital);
+    setbuf(stdin, NULL);
+    printf("Usuario registrado com sucesso! \n");
+}
+
+//  Funcao que printa o menu de login
+void menu_login(void)
+{
+    printf("========LOGIN======== \n");
+    printf("1. Logar \n");
+    printf("2. Registrar-se \n");
+    printf("0. Fechar programa \n");
+    printf("Opcao: ");
 }
