@@ -40,6 +40,7 @@ void alterar_produto(int codigo);
 //  Excluir produto
 void excluir_produto(int codigo);
 //  Vender produto
+float vender_produto(int codigo);
 //  Comprar produto
 //  Funcao que limpa a lista de produto
 void formatar_lista(void);
@@ -112,6 +113,7 @@ void leitura_da_opcao(int op)
             excluir_produto(verificador_de_produto());
             break;
         case(6):
+            vender_produto(verificador_de_produto());
             break;
         case(7):
             break;
@@ -160,6 +162,7 @@ int verificador_de_produto(void)
             return loop;
         }
     }
+    printf("Produto nao encontrado! \n");
     return -1;
 }
 
@@ -192,10 +195,6 @@ void localizar_produto(int posicao)
         printf("Codigo: %d \n", produto[posicao].codigo);
         printf("Preco: %.2f \n", produto[posicao].preco);
         printf("Quantidade: %d \n", produto[posicao].quantidade);
-    }
-    else
-    {
-        printf("Produto nao encontrado!! \n");
     }
 }
 
@@ -232,10 +231,6 @@ void alterar_produto(int codigo)
         produto[codigo].quantidade = 0;
         printf("Poduto alterado com sucesso \n");
     }
-    else
-    {
-        printf("Produto nao encontrado! \n");
-    }
 }
 //  Funcao que exclui um unico produto
 void excluir_produto(int codigo)
@@ -248,13 +243,35 @@ void excluir_produto(int codigo)
         produto[codigo].quantidade = 0;
         printf("Produto excluido com sucesso! \n");
     }
-    else
-    {
-        printf("Produto nao encontrado! \n");
-    }
 }
 
-//  Vender produto
+//  Funcao que vende um produto e retorna o valor ganho
+float vender_produto(int codigo)
+{
+    int quantidade;
+    float capital_ganho;
+
+    if(codigo != -1)
+    {
+        printf("========VENDER======== \n");
+        printf("Quantidade: ");
+        scanf("%d", &quantidade);
+        if(quantidade > 0 && quantidade < produto[codigo].quantidade)
+        {
+            produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
+            capital_ganho = quantidade * produto[codigo].preco;
+            printf("Venda realizada com sucesso! \n");
+            printf("Capital ganho: %.2f \n", capital_ganho);
+        }
+        else
+        {
+            printf("Quantidade invalida! \n");
+            printf("Lembre-se que e necessario adicionar (repor) a quantidade depois de cadastrar o produto!! \n");
+        }
+    }
+
+}
+
 //  Comprar produto
 //  Funcao que limpa a lista de produto
 void formatar_lista(void)
