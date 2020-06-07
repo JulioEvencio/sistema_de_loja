@@ -38,6 +38,7 @@ void listar_produto(void);
 //  Alterar produto
 void alterar_produto(int codigo);
 //  Excluir produto
+void excluir_produto(int codigo);
 //  Vender produto
 //  Comprar produto
 //  Funcao que limpa a lista de produto
@@ -108,6 +109,7 @@ void leitura_da_opcao(int op)
             alterar_produto(verificador_de_produto());
             break;
         case(5):
+            excluir_produto(verificador_de_produto());
             break;
         case(6):
             break;
@@ -235,7 +237,23 @@ void alterar_produto(int codigo)
         printf("Produto nao encontrado! \n");
     }
 }
-//  Excluir produto
+//  Funcao que exclui um unico produto
+void excluir_produto(int codigo)
+{
+    if(codigo != -1)
+    {
+        strcpy(produto[codigo].nome, "");
+        produto[codigo].codigo = 0;
+        produto[codigo].preco = 0;
+        produto[codigo].quantidade = 0;
+        printf("Produto excluido com sucesso! \n");
+    }
+    else
+    {
+        printf("Produto nao encontrado! \n");
+    }
+}
+
 //  Vender produto
 //  Comprar produto
 //  Funcao que limpa a lista de produto
