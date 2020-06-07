@@ -15,7 +15,7 @@ typedef struct Lista_Produto
 Tipo_Produto produto[100];
 
 //  Variavel global do codigo
-int variavel_codigo = 0;
+int variavel_codigo = 1;
 
 /*  Funcoes */
 //  Funcao que printa o menu
@@ -186,12 +186,12 @@ void listar_produto(void)
     {
         if(produto[i].codigo != 0)
         {
-            printf("============= \n");
-            printf("Nome: %s \n", produto[i].nome);
+            printf("======================== \n");
+            printf("Nome: %s", produto[i].nome);
             printf("Codigo: %d \n", produto[i].codigo);
             printf("Preco: %.2f \n", produto[i].preco);
             printf("Quantidade: %d \n", produto[i].quantidade);
-            printf("============= \n");
+            printf("======================== \n");
         }
     }
 }
