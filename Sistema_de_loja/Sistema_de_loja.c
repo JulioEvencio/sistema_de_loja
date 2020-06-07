@@ -30,6 +30,8 @@ int gerador_de_codigo(void);
 int verificador_de_produto(void);
 //  Funcao que cadastra o produto
 void cadastrar_produto(int posicao);
+//  Funcao que localiza produtos
+void localizar_produto(int posicao);
 //  Funcoes futuras
 //  Listar produtos
 void listar_produto(void);
@@ -97,6 +99,7 @@ void leitura_da_opcao(int op)
             cadastrar_produto(verificador_de_local_vazio());
             break;
         case(2):
+            localizar_produto(verificador_de_produto());
             break;
         case(3):
             listar_produto();
@@ -152,7 +155,7 @@ int verificador_de_produto(void)
     {
         if(produto[loop].codigo == codigo)
         {
-            return codigo;
+            return loop;
         }
     }
     return -1;
@@ -174,6 +177,23 @@ void cadastrar_produto(int posicao)
     else
     {
         printf("Lista cheia! \n");
+    }
+}
+
+//  Funcao que localiza produtos
+void localizar_produto(int posicao)
+{
+    if(posicao != -1)
+    {
+        printf("========LOCALIZAR======== \n");
+        printf("Nome: %s", produto[posicao].nome);
+        printf("Codigo: %d \n", produto[posicao].codigo);
+        printf("Preco: %.2f \n", produto[posicao].preco);
+        printf("Quantidade: %d \n", produto[posicao].quantidade);
+    }
+    else
+    {
+        printf("Produto nao encontrado!! \n");
     }
 }
 
@@ -202,9 +222,9 @@ void alterar_produto(int codigo)
     if(codigo != -1)
     {
         printf("========ALTERAR======== \n");
-        printf("Nome: ");
+        printf("Novo Nome: ");
         fgets(produto[codigo].nome, 101, stdin);
-        printf("Preco: ");
+        printf("Novo Preco: ");
         scanf("%d", &produto[codigo].preco);
         produto[codigo].codigo = gerador_de_codigo();
         produto[codigo].quantidade = 0;
