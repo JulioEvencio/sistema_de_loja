@@ -139,6 +139,7 @@ int verificador_de_local_vazio(void)
             return loop;
         }
     }
+    printf("Lista cheia! \n");
     return -1;
 }
 
@@ -177,14 +178,12 @@ void cadastrar_produto(int posicao)
         printf("========CADASTRAR======== \n");
         printf("Nome: ");
         fgets(produto[posicao].nome, 101, stdin);
+        setbuf(stdin, NULL);
         printf("Preco: ");
         scanf("%f", &produto[posicao].preco);
+        setbuf(stdin, NULL);
         produto[posicao].codigo = gerador_de_codigo();
         printf("Cadastro realizado com sucesso! \n");
-    }
-    else
-    {
-        printf("Lista cheia! \n");
     }
 }
 
@@ -193,11 +192,12 @@ void localizar_produto(int posicao)
 {
     if(posicao != -1)
     {
-        printf("========LOCALIZAR======== \n");
+        printf("================ \n");
         printf("Nome: %s", produto[posicao].nome);
         printf("Codigo: %d \n", produto[posicao].codigo);
         printf("Preco: %.2f \n", produto[posicao].preco);
         printf("Quantidade: %d \n", produto[posicao].quantidade);
+        printf("================ \n");
     }
 }
 
@@ -226,20 +226,26 @@ void alterar_produto(int codigo)
     if(codigo != -1)
     {
         printf("========ALTERAR======== \n");
+        localizar_produto(codigo);
         printf("Novo Nome: ");
         fgets(produto[codigo].nome, 101, stdin);
+        setbuf(stdin, NULL);
         printf("Novo Preco: ");
         scanf("%d", &produto[codigo].preco);
+        setbuf(stdin, NULL);
         produto[codigo].codigo = gerador_de_codigo();
         produto[codigo].quantidade = 0;
         printf("Poduto alterado com sucesso \n");
     }
 }
+
 //  Funcao que exclui um unico produto
 void excluir_produto(int codigo)
 {
     if(codigo != -1)
     {
+        printf("========EXCLUIR======== \n");
+        localizar_produto(codigo);
         strcpy(produto[codigo].nome, "");
         produto[codigo].codigo = 0;
         produto[codigo].preco = 0;
@@ -251,15 +257,17 @@ void excluir_produto(int codigo)
 //  Funcao que vende um produto e retorna o valor ganho
 float vender_produto(int codigo)
 {
-    int quantidade;
-    float capital_ganho;
-
     if(codigo != -1)
     {
+        int quantidade;
+        float capital_ganho;
+
         printf("========VENDER======== \n");
+        localizar_produto(codigo);
         printf("Quantidade: ");
         scanf("%d", &quantidade);
-        if(quantidade > 0 && quantidade < produto[codigo].quantidade)
+        setbuf(stdin, NULL);
+        if(quantidade > 0 && quantidade <= produto[codigo].quantidade)
         {
             produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
             capital_ganho = quantidade * produto[codigo].preco;
@@ -272,19 +280,19 @@ float vender_produto(int codigo)
             printf("Lembre-se que e necessario adicionar (repor) a quantidade depois de cadastrar o produto!! \n");
         }
     }
-
 }
 
 //  Funcao que repoe o produto, isto e, aumenta sua quantidade
 void repor_produto(int codigo)
 {
-    int quantidade;
-
     if(codigo != -1)
     {
+        int quantidade;
         printf("========REPOR======== \n");
+        localizar_produto(codigo);
         printf("Quantidade para repor no estoque: ");
         scanf("%d", &quantidade);
+        setbuf(stdin, NULL);
         if(quantidade > 0)
         {
             produto[codigo].quantidade = produto[codigo].quantidade + quantidade;
