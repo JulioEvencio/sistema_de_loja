@@ -43,7 +43,8 @@ void excluir_produto(int codigo);
 float vender_produto(int codigo);
 //  Repor produto
 void repor_produto(int codigo);
-
+//  Confirmar formatacao
+void confirmar_formatacao(void);
 //  Funcao que limpa a lista de produto
 void formatar_lista(void);
 
@@ -91,6 +92,7 @@ void printar_menu(void)
     printf("5. Excluir produto \n");
     printf("6. Vender produto \n");
     printf("7. Repor produto \n");
+    printf("8. Formatar lista \n");
     printf("Opcoes: ");
 }
 
@@ -119,6 +121,9 @@ void leitura_da_opcao(int op)
             break;
         case(7):
             repor_produto(verificador_de_produto());
+            break;
+        case(8):
+            confirmar_formatacao();
             break;
         case(0):
             printf("Obrigado por utilizar este programa! \n");
@@ -302,6 +307,31 @@ void repor_produto(int codigo)
         {
             printf("Quantidade invalida! \n");
         }
+    }
+}
+
+//  Funcao que vai confirmar a formatacao
+void confirmar_formatacao(void)
+{
+    int opcao;
+
+    printf("========FORMATAR======== \n");
+    printf("AO FORMATAR A LISTA TODOS OS PRODUTOS REGISTRADOS SERAO EXCLUIDOS PARA SEMPRE (MUITO TEMPO!)! \n");
+    printf("Digite '34851' para formatar ou aperte '0' para voltar \n");
+    printf("Opcao: ");
+    scanf("%d", &opcao);
+    setbuf(stdin, NULL);
+    switch(opcao)
+    {
+        case(34851):
+            formatar_lista();
+            printf("Lista formatada com sucesso! \n");
+            break;
+        case(0):
+            printf("Ainda bem que mudou de ideia, voce perderia todo seu trabalho de ter digitado! \n");
+            break;
+        default:
+            printf("Nao foi possivel reconhecer o numero, entao a lista NAO foi formatada para sua seguranca! \n");
     }
 }
 
