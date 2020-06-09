@@ -97,6 +97,11 @@ int main()
     //  Loop do programa
     do
     {
+        //  Informacoes do usuario
+        printf("========USUARIO======== \n");
+        printf("Nome: %s", nome);
+        printf("Dinheiro: %.2f \n\n", capital);
+
         //  Printando o menu
         printar_menu();
 
@@ -397,10 +402,10 @@ int login_do_usuario(void)
     fgets(user, 101, stdin);
     setbuf(stdin, NULL);
     printf("Senha: ");
-    scanf("%s", &pass[101]);
+    fgets(pass, 101, stdin);
     setbuf(stdin, NULL);
 
-    if(user[101] == usuario[101] && pass[101] == senha[101])
+    if(strcmp(usuario, user) == 0 && strcmp(pass, senha) == 0)
     {
         printf("Logado com sucesso! \n");
         return -1;
@@ -419,10 +424,10 @@ void registrar_usuario(void)
     fgets(nome, 101, stdin);
     setbuf(stdin, NULL);
     printf("Usuario: ");
-    fgets(usuario, 101, NULL);
+    fgets(usuario, 101, stdin);
     setbuf(stdin, NULL);
     printf("Senha: ");
-    fgets(senha, 101, NULL);
+    fgets(senha, 101, stdin);
     setbuf(stdin, NULL);
     printf("Digite seu capital inicial: ");
     scanf("%f", &capital);
