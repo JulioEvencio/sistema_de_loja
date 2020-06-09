@@ -10,6 +10,7 @@ typedef struct Lista_Produto
     int codigo;
     char nome[101];
     float preco;
+    float preco_repor;
     int quantidade;
 }Tipo_Produto;
 Tipo_Produto produto[100];
@@ -64,9 +65,6 @@ int main()
 {
     int opcao;
 
-    //  Formatando a lista antes do uso
-    formatar_lista();
-
     //  Loop do login
     do
     {
@@ -92,6 +90,9 @@ int main()
         system("pause");
         system("cls");
     }while(opcao != -1);
+
+    //  Formatando a lista antes do uso
+    formatar_lista();
 
     //  Loop do programa
     do
@@ -160,7 +161,7 @@ void leitura_da_opcao(int op)
             excluir_produto(verificador_de_produto());
             break;
         case(6):
-            vender_produto(verificador_de_produto());
+            capital = capital + vender_produto(verificador_de_produto());
             break;
         case(7):
             repor_produto(verificador_de_produto());
@@ -230,6 +231,9 @@ void cadastrar_produto(int posicao)
         printf("Preco: ");
         scanf("%f", &produto[posicao].preco);
         setbuf(stdin, NULL);
+        printf("Preco para repor: ");
+        scanf("%f", &produto[posicao].preco_repor);
+        setbuf(stdin, NULL);
         produto[posicao].codigo = gerador_de_codigo();
         printf("Cadastro realizado com sucesso! \n");
     }
@@ -244,6 +248,7 @@ void localizar_produto(int posicao)
         printf("Nome: %s", produto[posicao].nome);
         printf("Codigo: %d \n", produto[posicao].codigo);
         printf("Preco: %.2f \n", produto[posicao].preco);
+        printf("Preco para repor: %.2f \n", produto[posicao].preco_repor);
         printf("Quantidade: %d \n", produto[posicao].quantidade);
         printf("================ \n");
     }
@@ -258,12 +263,7 @@ void listar_produto(void)
     {
         if(produto[i].codigo != 0)
         {
-            printf("======================== \n");
-            printf("Nome: %s", produto[i].nome);
-            printf("Codigo: %d \n", produto[i].codigo);
-            printf("Preco: %.2f \n", produto[i].preco);
-            printf("Quantidade: %d \n", produto[i].quantidade);
-            printf("======================== \n");
+            localizar_produto(i);
         }
     }
 }
@@ -281,6 +281,9 @@ void alterar_produto(int codigo)
         printf("Novo Preco: ");
         scanf("%d", &produto[codigo].preco);
         setbuf(stdin, NULL);
+        printf("Novo Preco para repor: ");
+        scanf("%f", &produto[codigo].preco_repor);
+        setbuf(stdin, NULL);
         produto[codigo].codigo = gerador_de_codigo();
         produto[codigo].quantidade = 0;
         printf("Poduto alterado com sucesso \n");
@@ -297,6 +300,7 @@ void excluir_produto(int codigo)
         strcpy(produto[codigo].nome, "");
         produto[codigo].codigo = 0;
         produto[codigo].preco = 0;
+        produto[codigo].preco_repor = 0;
         produto[codigo].quantidade = 0;
         printf("Produto excluido com sucesso! \n");
     }
@@ -336,19 +340,29 @@ void repor_produto(int codigo)
     if(codigo != -1)
     {
         int quantidade;
+        float valor;
         printf("========REPOR======== \n");
         localizar_produto(codigo);
         printf("Quantidade para repor no estoque: ");
         scanf("%d", &quantidade);
         setbuf(stdin, NULL);
-        if(quantidade > 0)
+        valor = quantidade * produto[codigo].preco_repor;
+        if(valor > capital)
         {
-            produto[codigo].quantidade = produto[codigo].quantidade + quantidade;
-            printf("Reposicao concluida! \n");
+            printf("Dinheiro insuficiente! \n");
         }
         else
         {
-            printf("Quantidade invalida! \n");
+            if(quantidade > 0)
+            {
+                produto[codigo].quantidade = produto[codigo].quantidade + quantidade;
+                capital = capital - valor;
+                printf("Reposicao concluida! \n");
+            }
+            else
+            {
+                printf("Quantidade invalida! \n");
+            }
         }
     }
 }
@@ -387,6 +401,7 @@ void formatar_lista(void)
         produto[i].codigo = 0;
         strcpy(produto[i].nome, "");
         produto[i].preco = 0;
+        produto[i].preco_repor = 0;
         produto[i].quantidade = 0;
     }
 }
