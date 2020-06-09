@@ -32,7 +32,6 @@ int verificador_de_produto(void);
 void cadastrar_produto(int posicao);
 //  Funcao que localiza produtos
 void localizar_produto(int posicao);
-//  Funcoes futuras
 //  Listar produtos
 void listar_produto(void);
 //  Alterar produto
