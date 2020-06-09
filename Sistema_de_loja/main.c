@@ -46,7 +46,11 @@ void alterar_produto(int codigo);
 //  Excluir produto
 void excluir_produto(int codigo);
 //  Vender produto
-float vender_produto(int codigo);
+void vender_produto(int codigo);
+//  Vender produto a vista
+void vender_produto_a_vista(int codigo, int quantidade);
+//  Vender produto parcelado
+void vender_produto_parcelado(int codigo, int quantidade);
 //  Repor produto
 void repor_produto(int codigo);
 //  Confirmar formatacao
@@ -161,7 +165,7 @@ void leitura_da_opcao(int op)
             excluir_produto(verificador_de_produto());
             break;
         case(6):
-            capital = capital + vender_produto(verificador_de_produto());
+            vender_produto(verificador_de_produto());
             break;
         case(7):
             repor_produto(verificador_de_produto());
@@ -307,12 +311,11 @@ void excluir_produto(int codigo)
 }
 
 //  Funcao que vende um produto e retorna o valor ganho
-float vender_produto(int codigo)
+void vender_produto(int codigo)
 {
     if(codigo != -1)
     {
-        int quantidade;
-        float capital_ganho;
+        int quantidade, opcao;
 
         printf("========VENDER======== \n");
         localizar_produto(codigo);
@@ -321,10 +324,24 @@ float vender_produto(int codigo)
         setbuf(stdin, NULL);
         if(quantidade > 0 && quantidade <= produto[codigo].quantidade)
         {
-            produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
-            capital_ganho = quantidade * produto[codigo].preco;
-            printf("Venda realizada com sucesso! \n");
-            printf("Capital ganho: %.2f \n", capital_ganho);
+            printf("========PAGAMENTO======== \n");
+            printf("1. A vista \n");
+            printf("2. Parcelado \n");
+            printf("0. Cancelar \n");
+            switch(opcao)
+            {
+                case(1):
+                    vender_produto_a_vista(codigo, quantidade);
+                    break;
+                case(2):
+                    vender_produto_parcelado(codigo, quantidade);
+                    break;
+                case(3):
+                    printf("Venda cancelada! \n");
+                    break;
+                default:
+                    printf("Opcao invalida! \n");
+            }
         }
         else
         {
@@ -457,4 +474,76 @@ void menu_login(void)
     printf("2. Registrar-se \n");
     printf("0. Fechar programa \n");
     printf("Opcao: ");
+}
+
+//  Funcao que vender produto a vista
+void vender_produto_a_vista(int codigo, int quantidade)
+{
+    float capital_ganho, desconto;
+    printf("========A VISTA======== \n");
+    printf("Voce ganhou 15% de desconto! \n");
+    produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
+    desconto = (quantidade * produto[codigo].preco) * 0.15;
+    capital_ganho = (quantidade * produto[codigo].preco) - desconto;
+    printf("Venda realizada com sucesso! \n");
+    printf("Capital ganho: %.2f \n", capital_ganho);
+}
+
+//  Funcao que vende produto parcelado
+void vender_produto_parcelado(int codigo, int quantidade)
+{
+    int parcelas, juros;
+    float capital_ganho;
+    printf("========PARCELADO======== \n");
+    printf("Parcelar em quantos meses? \n");
+    scanf("%d", &parcelas);
+    setbuf(stdin, NULL);
+    if(parcelas < 3)
+    {
+        printf("Sem juros! \n");
+        produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
+        capital_ganho = quantidade * produto[codigo].preco;
+        printf("Venda realizada com sucesso! \n");
+        printf("Capital ganho: %.2f \n", capital_ganho);
+    }
+    else
+    {
+        if(parcelas >= 3 && parcelas <= 6)
+        {
+            printf("5% de juros! \n");
+            produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
+            juros = (quantidade * produto[codigo].preco) * 0.05;
+            capital_ganho = (quantidade * produto[codigo].preco) + juros;
+            printf("Venda realizada com sucesso! \n");
+            printf("Capital ganho: %.2f \n", capital_ganho);
+        }
+        else
+        {
+            if(parcelas >= 7 && parcelas <= 10)
+            {
+                printf("8% de juros! \n");
+                produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
+                juros = (quantidade * produto[codigo].preco) * 0.08;
+                capital_ganho = (quantidade * produto[codigo].preco) + juros;
+                printf("Venda realizada com sucesso! \n");
+                printf("Capital ganho: %.2f \n", capital_ganho);
+            }
+            else
+            {
+                if(parcelas == 11 || parcelas == 12)
+                {
+                    printf("10% de juros! \n");
+                    produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
+                    juros = (quantidade * produto[codigo].preco) * 0.10;
+                    capital_ganho = (quantidade * produto[codigo].preco) + juros;
+                    printf("Venda realizada com sucesso! \n");
+                    printf("Capital ganho: %.2f \n", capital_ganho);
+                }
+                else
+                {
+                    printf("Voce pode parcelar ate em 12x, nada a mais ou a menos! \n");
+                }
+            }
+        }
+    }
 }
