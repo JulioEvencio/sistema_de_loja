@@ -152,7 +152,7 @@ int verificador_de_local_vazio(void)
 int gerador_de_codigo(void)
 {
     int x;;
-    x = variavel_codigo;
+    x = variavel_codigo;    //  variavel_codigo e uma variavel global
     variavel_codigo++;
     return x;
 }
@@ -316,7 +316,7 @@ void confirmar_formatacao(void)
     int opcao;
 
     printf("========FORMATAR======== \n");
-    printf("AO FORMATAR A LISTA TODOS OS PRODUTOS REGISTRADOS SERAO EXCLUIDOS PARA SEMPRE (MUITO TEMPO!)! \n");
+    printf("AO FORMATAR A LISTA TODOS OS PRODUTOS REGISTRADOS SERAO EXCLUIDOS PARA SEMPRE (MUITO TEMPO)! \n");
     printf("Digite '34851' para formatar ou aperte '0' para voltar \n");
     printf("Opcao: ");
     scanf("%d", &opcao);
