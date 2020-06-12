@@ -24,7 +24,7 @@ Tipo_Produto produto[100];
 Historico historico[100];
 
 //  Variavel global do codigo e do historico
-int variavel_codigo, variavel_historico;
+int variavel_codigo;
 
 //  Variaveis globais do usuario
 char nome[101] = "";
