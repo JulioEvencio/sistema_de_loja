@@ -3,6 +3,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+///Gomesh: Struct dos dados do historio
+//Futuramente pode ser adicionado data e hora
+typedef struct tipo_historico{
+    char descricao[101];
+}Historico;
+
 //  Struct global do produto
 typedef struct Lista_Produto
 {
@@ -11,9 +17,11 @@ typedef struct Lista_Produto
     float preco;
     float preco_repor;
     int quantidade;
-    char historico[101];
 }Tipo_Produto;
+
 Tipo_Produto produto[100];
+
+Historico historico[100];
 
 //  Variavel global do codigo e do historico
 int variavel_codigo, variavel_historico;
@@ -36,23 +44,23 @@ int gerador_de_codigo(void);
 //  Funcap que verifica se um produto existe
 int verificador_de_produto(void);
 //  Funcao que cadastra o produto
-void cadastrar_produto(int posicao, int historico);
+void cadastrar_produto(int posicao);
 //  Funcao que localiza produtos
 void localizar_produto(int posicao);
 //  Listar produtos
 void listar_produto(void);
 //  Alterar produto
-void alterar_produto(int codigo, int historico);
+void alterar_produto(int codigo);
 //  Excluir produto
-void excluir_produto(int codigo, int historico);
+void excluir_produto(int codigo);
 //  Vender produto
 void vender_produto(int codigo);
 //  Vender produto a vista
-void vender_produto_a_vista(int codigo, int quantidade, int historico);
+void vender_produto_a_vista(int codigo, int quantidade);
 //  Vender produto parcelado
-void vender_produto_parcelado(int codigo, int quantidade, int historico);
+void vender_produto_parcelado(int codigo, int quantidade);
 //  Repor produto
-void repor_produto(int codigo, int historico);
+void repor_produto(int codigo);
 //  Confirmar formatacao
 void confirmar_formatacao(void);
 //  Funcao que limpa a lista de produto
@@ -159,7 +167,7 @@ void leitura_da_opcao(int op)
     switch(op)
     {
         case(1):
-            cadastrar_produto(verificador_de_local_vazio(), verificador_de_historico());
+            cadastrar_produto(verificador_de_local_vazio());
             break;
         case(2):
             localizar_produto(verificador_de_produto());
@@ -168,16 +176,16 @@ void leitura_da_opcao(int op)
             listar_produto();
             break;
         case(4):
-            alterar_produto(verificador_de_produto(), verificador_de_historico());
+            alterar_produto(verificador_de_produto());
             break;
         case(5):
-            excluir_produto(verificador_de_produto(), verificador_de_historico());
+            excluir_produto(verificador_de_produto());
             break;
         case(6):
             vender_produto(verificador_de_produto());
             break;
         case(7):
-            repor_produto(verificador_de_produto(), verificador_de_historico());
+            repor_produto(verificador_de_produto());
             break;
         case(8):
             printar_historico();
@@ -236,7 +244,8 @@ int verificador_de_produto(void)
 }
 
 //  Funcao que cadastra o produto
-void cadastrar_produto(int posicao, int historico)
+///Gomesh: funcionamento do historico alterado
+void cadastrar_produto(int posicao)
 {
     if(posicao != -1)
     {
@@ -251,7 +260,24 @@ void cadastrar_produto(int posicao, int historico)
         scanf("%f", &produto[posicao].preco_repor);
         setbuf(stdin, NULL);
         produto[posicao].codigo = gerador_de_codigo();
-        strcpy(produto[historico].historico, "Um novo produto foi adicionado");
+
+        ///Gomesh: A variavel i recebe a posicao vazia do historico.
+        ///        A string informacao recebe o nome e a mensagem.
+        ///        Por fim, o historico e armazenado.
+        int i = verificador_de_historico();
+        char informacao[101];
+        char produto_nome[101];
+
+        strcpy(produto_nome, produto[posicao].nome);
+        int tam = strlen(produto_nome);
+        produto_nome[tam-1]=' ';
+
+        strcpy(informacao, produto_nome);
+        strcat(informacao, "foi adicionado\0");
+
+        strcpy(historico[i].descricao, informacao);
+        ///--------------------------------------------------------
+
         printf("Cadastro realizado com sucesso! \n");
     }
 }
@@ -286,7 +312,8 @@ void listar_produto(void)
 }
 
 //  Alterar produto
-void alterar_produto(int codigo, int historico)
+///Gomesh: funcionamento do historico alterado
+void alterar_produto(int codigo)
 {
     if(codigo != -1)
     {
@@ -301,13 +328,31 @@ void alterar_produto(int codigo, int historico)
         printf("Novo Preco para repor: ");
         scanf("%f", &produto[codigo].preco_repor);
         setbuf(stdin, NULL);
-        strcpy(produto[historico].historico, "Um produto foi alterado");
+
+        ///Gomesh: A variavel i recebe a posicao vazia do historico.
+        ///        A string informacao recebe o nome e a mensagem.
+        ///        Por fim, o historico e armazenado.
+        int i = verificador_de_historico();
+        char informacao[101];
+        char produto_nome[101];
+
+        strcpy(produto_nome, produto[codigo].nome);
+        int tam = strlen(produto_nome);
+        produto_nome[tam-1]=' ';
+
+        strcpy(informacao, produto_nome);
+        strcat(informacao, "foi alterado\0");
+
+        strcpy(historico[i].descricao, informacao);
+        ///--------------------------------------------------------
+
         printf("Poduto alterado com sucesso \n");
     }
 }
 
 //  Funcao que exclui um unico produto
-void excluir_produto(int codigo, int historico)
+///Gomesh: funcionamento do historico alterado
+void excluir_produto(int codigo)
 {
     if(codigo != -1)
     {
@@ -325,7 +370,24 @@ void excluir_produto(int codigo, int historico)
             produto[codigo].preco = 0;
             produto[codigo].preco_repor = 0;
             produto[codigo].quantidade = 0;
-            strcpy(produto[historico].historico, "Um produto foi excluido");
+
+            ///Gomesh: A variavel i recebe a posicao vazia do historico.
+            ///        A string informacao recebe o nome e a mensagem.
+            ///        Por fim, o historico e armazenado.
+            int i = verificador_de_historico();
+            char informacao[101];
+            char produto_nome[101];
+
+            strcpy(produto_nome, produto[codigo].nome);
+            int tam = strlen(produto_nome);
+            produto_nome[tam-1]=' ';
+
+            strcpy(informacao, produto_nome);
+            strcat(informacao, "foi excluido\0");
+
+            strcpy(historico[i].descricao, informacao);
+            ///--------------------------------------------------------
+
             printf("Produto excluido com sucesso! \n");
         }
         else
@@ -358,10 +420,10 @@ void vender_produto(int codigo)
             switch(opcao)
             {
                 case(1):
-                    vender_produto_a_vista(codigo, quantidade, verificador_de_historico());
+                    vender_produto_a_vista(codigo, quantidade);
                     break;
                 case(2):
-                    vender_produto_parcelado(codigo, quantidade, verificador_de_historico());
+                    vender_produto_parcelado(codigo, quantidade);
                     break;
                 case(0):
                     printf("Venda cancelada! \n");
@@ -379,7 +441,8 @@ void vender_produto(int codigo)
 }
 
 //  Funcao que repoe o produto, isto e, aumenta sua quantidade
-void repor_produto(int codigo, int historico)
+///Gomesh: funcionamento do historico alterado
+void repor_produto(int codigo)
 {
     if(codigo != -1)
     {
@@ -401,7 +464,23 @@ void repor_produto(int codigo, int historico)
             {
                 produto[codigo].quantidade = produto[codigo].quantidade + quantidade;
                 capital = capital - valor;
-                strcpy(produto[historico].historico, "Um produto foi reposto");
+                ///Gomesh: A variavel i recebe a posicao vazia do historico.
+                ///        A string informacao recebe o nome e a mensagem.
+                ///        Por fim, o historico e armazenado.
+                int i = verificador_de_historico();
+                char informacao[101];
+                char produto_nome[101];
+
+                strcpy(produto_nome, produto[codigo].nome);
+                int tam = strlen(produto_nome);
+                produto_nome[tam-1]=' ';
+
+                strcpy(informacao, produto_nome);
+                strcat(informacao, "foi reposto\0");
+
+                strcpy(historico[i].descricao, informacao);
+                ///--------------------------------------------------------
+
                 printf("Reposicao concluida! \n");
             }
             else
@@ -440,7 +519,7 @@ void confirmar_formatacao(void)
 //  Funcao que limpa a lista de produto
 void formatar_lista(void)
 {
-    int i;
+    int i, j;
     for(i = 0; i <= 100; i++)
     {
         produto[i].codigo = 0;
@@ -448,7 +527,9 @@ void formatar_lista(void)
         produto[i].preco = 0;
         produto[i].preco_repor = 0;
         produto[i].quantidade = 0;
-        strcpy(produto[i].historico, "");
+
+        ///Gomesh: Inicializando o historico
+        strcpy(historico[i].descricao, "");
     }
     variavel_codigo = 0;
     variavel_historico = 0;
@@ -508,7 +589,8 @@ void menu_login(void)
 }
 
 //  Funcao que vender produto a vista
-void vender_produto_a_vista(int codigo, int quantidade, int historico)
+///Gomesh: funcionamento do historico alterado
+void vender_produto_a_vista(int codigo, int quantidade)
 {
     float capital_ganho, desconto;
     printf("========A VISTA======== \n");
@@ -516,14 +598,32 @@ void vender_produto_a_vista(int codigo, int quantidade, int historico)
     desconto = (quantidade * produto[codigo].preco) * 0.15;
     capital_ganho = (quantidade * produto[codigo].preco) - desconto;
     capital = capital + capital_ganho;
-    strcpy(produto[historico].historico, "Um produto foi vendido a vista");
+
+    ///Gomesh: A variavel i recebe a posicao vazia do historico.
+    ///        A string informacao recebe o nome e a mensagem.
+    ///        Por fim, o historico e armazenado.
+    int i = verificador_de_historico();
+    char informacao[101];
+    char produto_nome[101];
+
+    strcpy(produto_nome, produto[codigo].nome);
+    int tam = strlen(produto_nome);
+    produto_nome[tam-1]=' ';
+
+    strcpy(informacao, produto_nome);
+    strcat(informacao, "foi vendido a vista\0");
+
+    strcpy(historico[i].descricao, informacao);
+    ///--------------------------------------------------------
+
     printf("Voce ganhou %.2f reais de desconto! \n", desconto);
     printf("Venda realizada com sucesso! \n");
     printf("Capital ganho: %.2f \n", capital_ganho);
 }
 
 //  Funcao que vende produto parcelado
-void vender_produto_parcelado(int codigo, int quantidade, int historico)
+///Gomesh: funcionamento do historico alterado
+void vender_produto_parcelado(int codigo, int quantidade)
 {
     int parcelas, juros;
     float capital_ganho;
@@ -536,7 +636,24 @@ void vender_produto_parcelado(int codigo, int quantidade, int historico)
         printf("Sem juros! \n");
         produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
         capital_ganho = quantidade * produto[codigo].preco;
-        strcpy(produto[historico].historico, "Um produto foi vendido parcelado");
+
+        ///Gomesh: A variavel i recebe a posicao vazia do historico.
+        ///        A string informacao recebe o nome e a mensagem.
+        ///        Por fim, o historico e armazenado.
+        int i = verificador_de_historico();
+        char informacao[101];
+        char produto_nome[101];
+
+        strcpy(produto_nome, produto[codigo].nome);
+        int tam = strlen(produto_nome);
+        produto_nome[tam-1]=' ';
+
+        strcpy(informacao, produto_nome);
+        strcat(informacao, "foi vendido parcelado\0");
+
+        strcpy(historico[i].descricao, informacao);
+        ///--------------------------------------------------------
+
         printf("Venda realizada com sucesso! \n");
         printf("Capital ganho: %.2f \n", capital_ganho);
     }
@@ -548,7 +665,24 @@ void vender_produto_parcelado(int codigo, int quantidade, int historico)
             produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
             juros = (quantidade * produto[codigo].preco) * 0.05;
             capital_ganho = (quantidade * produto[codigo].preco) + juros;
-            strcpy(produto[historico].historico, "Um produto foi vendido parcelado");
+
+            ///Gomesh: A variavel i recebe a posicao vazia do historico.
+            ///        A string informacao recebe o nome e a mensagem.
+            ///        Por fim, o historico e armazenado.
+            int i = verificador_de_historico();
+            char informacao[101];
+            char produto_nome[101];
+
+            strcpy(produto_nome, produto[codigo].nome);
+            int tam = strlen(produto_nome);
+            produto_nome[tam-1]=' ';
+
+            strcpy(informacao, produto_nome);
+            strcat(informacao, "foi vendido parcelado\0");
+
+            strcpy(historico[i].descricao, informacao);
+            ///--------------------------------------------------------
+
             printf("Venda realizada com sucesso! \n");
             printf("Capital ganho: %.2f \n", capital_ganho);
         }
@@ -560,7 +694,24 @@ void vender_produto_parcelado(int codigo, int quantidade, int historico)
                 produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
                 juros = (quantidade * produto[codigo].preco) * 0.08;
                 capital_ganho = (quantidade * produto[codigo].preco) + juros;
-                strcpy(produto[historico].historico, "Um produto foi vendido parcelado");
+
+                ///Gomesh: A variavel i recebe a posicao vazia do historico.
+                ///        A string informacao recebe o nome e a mensagem.
+                ///        Por fim, o historico e armazenado.
+                int i = verificador_de_historico();
+                char informacao[101];
+                char produto_nome[101];
+
+                strcpy(produto_nome, produto[codigo].nome);
+                int tam = strlen(produto_nome);
+                produto_nome[tam-1]=' ';
+
+                strcpy(informacao, produto_nome);
+                strcat(informacao, "foi vendido parcelado\0");
+
+                strcpy(historico[i].descricao, informacao);
+                ///--------------------------------------------------------
+
                 printf("Venda realizada com sucesso! \n");
                 printf("Capital ganho: %.2f \n", capital_ganho);
             }
@@ -572,7 +723,24 @@ void vender_produto_parcelado(int codigo, int quantidade, int historico)
                     produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
                     juros = (quantidade * produto[codigo].preco) * 0.10;
                     capital_ganho = (quantidade * produto[codigo].preco) + juros;
-                    strcpy(produto[historico].historico, "Um produto foi vendido parcelado");
+
+                    ///Gomesh: A variavel i recebe a posicao vazia do historico.
+                    ///        A string informacao recebe o nome e a mensagem.
+                    ///        Por fim, o historico e armazenado.
+                    int i = verificador_de_historico();
+                    char informacao[101];
+                    char produto_nome[101];
+
+                    strcpy(produto_nome, produto[codigo].nome);
+                    int tam = strlen(produto_nome);
+                    produto_nome[tam-1]=' ';
+
+                    strcpy(informacao, produto_nome);
+                    strcat(informacao, "foi vendido parcelado\0");
+
+                    strcpy(historico[i].descricao, informacao);
+                    ///--------------------------------------------------------
+
                     printf("Venda realizada com sucesso! \n");
                     printf("Capital ganho: %.2f \n", capital_ganho);
                 }
@@ -587,8 +755,19 @@ void vender_produto_parcelado(int codigo, int quantidade, int historico)
 }
 
 //  Funcao que verifica um lugar vazio no historico
+///Gomesh: Funcao alterada para retornar o primeiro espaco vazio do historico
+//Caso o historico esteja cheio, retorna -1;
 int verificador_de_historico(void)
 {
+    int i;
+    for(i=0; i<100; i++){
+        if(strcmp(historico[i].descricao, "")==0){
+            return i;
+        }
+    }
+    return -1;
+
+    /**
     if(variavel_historico <= 100)
     {
         variavel_historico++;
@@ -598,6 +777,7 @@ int verificador_de_historico(void)
         variavel_historico = 0;
     }
     return variavel_historico;
+    */
 }
 
 //  Funcao que printa o historico
@@ -605,11 +785,11 @@ void printar_historico(void)
 {
     int loop;
     printf("========HISTORICO======== \n");
-    for(loop = 0; loop <= 100; loop++)
+    for(loop = 0; loop < 100; loop++)
     {
-        if(strcmp(produto[loop].historico, "") != 0)
+        if(strcmp(historico[loop].descricao, "") != 0)
         {
-            printf("%s \n", produto[loop].historico);
+            printf("%s\n", historico[loop].descricao);
         }
     }
 }
