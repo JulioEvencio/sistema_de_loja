@@ -67,6 +67,8 @@ void menu_login(void);
 int verificador_de_historico(void);
 //  Funcao do historico
 void printar_historico(void);
+//  Funcao que formata string
+void formatar_string(void);
 
 //  Funcao main
 int main()
@@ -251,7 +253,9 @@ void cadastrar_produto(int posicao, int historico)
         scanf("%f", &produto[posicao].preco_repor);
         setbuf(stdin, NULL);
         produto[posicao].codigo = gerador_de_codigo();
-        strcpy(produto[historico].historico, "Um novo produto foi adicionado");
+        strcat(produto[historico].historico, produto[posicao].nome);
+        strcat(produto[historico].historico, " foi adicionado a lista");
+        formatar_string();
         printf("Cadastro realizado com sucesso! \n");
     }
 }
@@ -610,6 +614,21 @@ void printar_historico(void)
         if(strcmp(produto[loop].historico, "") != 0)
         {
             printf("%s \n", produto[loop].historico);
+        }
+    }
+}
+
+//  Funcao que tira o /0 da string
+void formatar_string(void)
+{
+    int i;
+    for(i = 0; i <= 101; i++)
+    {
+        if(produto[i].historico[i] == '\0')
+        {
+            printf("Teste!! \n");
+            system("pause");
+            produto[i].historico[i] = "R";
         }
     }
 }
