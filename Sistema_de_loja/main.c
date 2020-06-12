@@ -36,23 +36,23 @@ int gerador_de_codigo(void);
 //  Funcap que verifica se um produto existe
 int verificador_de_produto(void);
 //  Funcao que cadastra o produto
-void cadastrar_produto(int posicao, int historico);
+void cadastrar_produto(int posicao);
 //  Funcao que localiza produtos
 void localizar_produto(int posicao);
 //  Listar produtos
 void listar_produto(void);
 //  Alterar produto
-void alterar_produto(int codigo, int historico);
+void alterar_produto(int codigo);
 //  Excluir produto
-void excluir_produto(int codigo, int historico);
+void excluir_produto(int codigo);
 //  Vender produto
 void vender_produto(int codigo);
 //  Vender produto a vista
-void vender_produto_a_vista(int codigo, int quantidade, int historico);
+void vender_produto_a_vista(int codigo, int quantidade);
 //  Vender produto parcelado
-void vender_produto_parcelado(int codigo, int quantidade, int historico);
+void vender_produto_parcelado(int codigo, int quantidade);
 //  Repor produto
-void repor_produto(int codigo, int historico);
+void repor_produto(int codigo);
 //  Confirmar formatacao
 void confirmar_formatacao(void);
 //  Funcao que limpa a lista de produto
@@ -159,7 +159,7 @@ void leitura_da_opcao(int op)
     switch(op)
     {
         case(1):
-            cadastrar_produto(verificador_de_local_vazio(), verificador_de_historico());
+            cadastrar_produto(verificador_de_local_vazio());
             break;
         case(2):
             localizar_produto(verificador_de_produto());
@@ -168,16 +168,16 @@ void leitura_da_opcao(int op)
             listar_produto();
             break;
         case(4):
-            alterar_produto(verificador_de_produto(), verificador_de_historico());
+            alterar_produto(verificador_de_produto());
             break;
         case(5):
-            excluir_produto(verificador_de_produto(), verificador_de_historico());
+            excluir_produto(verificador_de_produto());
             break;
         case(6):
             vender_produto(verificador_de_produto());
             break;
         case(7):
-            repor_produto(verificador_de_produto(), verificador_de_historico());
+            repor_produto(verificador_de_produto());
             break;
         case(8):
             printar_historico();
@@ -236,7 +236,7 @@ int verificador_de_produto(void)
 }
 
 //  Funcao que cadastra o produto
-void cadastrar_produto(int posicao, int historico)
+void cadastrar_produto(int posicao)
 {
     if(posicao != -1)
     {
@@ -251,7 +251,6 @@ void cadastrar_produto(int posicao, int historico)
         scanf("%f", &produto[posicao].preco_repor);
         setbuf(stdin, NULL);
         produto[posicao].codigo = gerador_de_codigo();
-        strcpy(produto[historico].historico, "Um novo produto foi adicionado");
         printf("Cadastro realizado com sucesso! \n");
     }
 }
@@ -286,7 +285,7 @@ void listar_produto(void)
 }
 
 //  Alterar produto
-void alterar_produto(int codigo, int historico)
+void alterar_produto(int codigo)
 {
     if(codigo != -1)
     {
@@ -301,13 +300,12 @@ void alterar_produto(int codigo, int historico)
         printf("Novo Preco para repor: ");
         scanf("%f", &produto[codigo].preco_repor);
         setbuf(stdin, NULL);
-        strcpy(produto[historico].historico, "Um produto foi alterado");
         printf("Poduto alterado com sucesso \n");
     }
 }
 
 //  Funcao que exclui um unico produto
-void excluir_produto(int codigo, int historico)
+void excluir_produto(int codigo)
 {
     if(codigo != -1)
     {
@@ -325,7 +323,6 @@ void excluir_produto(int codigo, int historico)
             produto[codigo].preco = 0;
             produto[codigo].preco_repor = 0;
             produto[codigo].quantidade = 0;
-            strcpy(produto[historico].historico, "Um produto foi excluido");
             printf("Produto excluido com sucesso! \n");
         }
         else
@@ -358,10 +355,10 @@ void vender_produto(int codigo)
             switch(opcao)
             {
                 case(1):
-                    vender_produto_a_vista(codigo, quantidade, verificador_de_historico());
+                    vender_produto_a_vista(codigo, quantidade);
                     break;
                 case(2):
-                    vender_produto_parcelado(codigo, quantidade, verificador_de_historico());
+                    vender_produto_parcelado(codigo, quantidade);
                     break;
                 case(0):
                     printf("Venda cancelada! \n");
@@ -379,7 +376,7 @@ void vender_produto(int codigo)
 }
 
 //  Funcao que repoe o produto, isto e, aumenta sua quantidade
-void repor_produto(int codigo, int historico)
+void repor_produto(int codigo)
 {
     if(codigo != -1)
     {
@@ -401,7 +398,6 @@ void repor_produto(int codigo, int historico)
             {
                 produto[codigo].quantidade = produto[codigo].quantidade + quantidade;
                 capital = capital - valor;
-                strcpy(produto[historico].historico, "Um produto foi reposto");
                 printf("Reposicao concluida! \n");
             }
             else
@@ -508,7 +504,7 @@ void menu_login(void)
 }
 
 //  Funcao que vender produto a vista
-void vender_produto_a_vista(int codigo, int quantidade, int historico)
+void vender_produto_a_vista(int codigo, int quantidade)
 {
     float capital_ganho, desconto;
     printf("========A VISTA======== \n");
@@ -516,14 +512,13 @@ void vender_produto_a_vista(int codigo, int quantidade, int historico)
     desconto = (quantidade * produto[codigo].preco) * 0.15;
     capital_ganho = (quantidade * produto[codigo].preco) - desconto;
     capital = capital + capital_ganho;
-    strcpy(produto[historico].historico, "Um produto foi vendido a vista");
     printf("Voce ganhou %.2f reais de desconto! \n", desconto);
     printf("Venda realizada com sucesso! \n");
     printf("Capital ganho: %.2f \n", capital_ganho);
 }
 
 //  Funcao que vende produto parcelado
-void vender_produto_parcelado(int codigo, int quantidade, int historico)
+void vender_produto_parcelado(int codigo, int quantidade)
 {
     int parcelas, juros;
     float capital_ganho;
@@ -536,7 +531,6 @@ void vender_produto_parcelado(int codigo, int quantidade, int historico)
         printf("Sem juros! \n");
         produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
         capital_ganho = quantidade * produto[codigo].preco;
-        strcpy(produto[historico].historico, "Um produto foi vendido parcelado");
         printf("Venda realizada com sucesso! \n");
         printf("Capital ganho: %.2f \n", capital_ganho);
     }
@@ -548,7 +542,6 @@ void vender_produto_parcelado(int codigo, int quantidade, int historico)
             produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
             juros = (quantidade * produto[codigo].preco) * 0.05;
             capital_ganho = (quantidade * produto[codigo].preco) + juros;
-            strcpy(produto[historico].historico, "Um produto foi vendido parcelado");
             printf("Venda realizada com sucesso! \n");
             printf("Capital ganho: %.2f \n", capital_ganho);
         }
@@ -560,7 +553,6 @@ void vender_produto_parcelado(int codigo, int quantidade, int historico)
                 produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
                 juros = (quantidade * produto[codigo].preco) * 0.08;
                 capital_ganho = (quantidade * produto[codigo].preco) + juros;
-                strcpy(produto[historico].historico, "Um produto foi vendido parcelado");
                 printf("Venda realizada com sucesso! \n");
                 printf("Capital ganho: %.2f \n", capital_ganho);
             }
@@ -572,7 +564,6 @@ void vender_produto_parcelado(int codigo, int quantidade, int historico)
                     produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
                     juros = (quantidade * produto[codigo].preco) * 0.10;
                     capital_ganho = (quantidade * produto[codigo].preco) + juros;
-                    strcpy(produto[historico].historico, "Um produto foi vendido parcelado");
                     printf("Venda realizada com sucesso! \n");
                     printf("Capital ganho: %.2f \n", capital_ganho);
                 }
