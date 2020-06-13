@@ -11,12 +11,23 @@ typedef struct Lista_Produto
     float preco;
     float preco_repor;
     int quantidade;
-    char historico[101];
 }Tipo_Produto;
 Tipo_Produto produto[100];
 
-//  Variavel global do codigo e do historico
-int variavel_codigo, variavel_historico;
+//  Struct global do historico
+typedef struct Tipo_historico
+{
+    char descricao[101];
+}Historico;
+Historico historico[101];
+
+//  Variavel global do codigo
+int variavel_codigo;
+
+//  Variavel global do historico
+int variavel_historico, tamanho_nome;
+char informacao1[101];
+char informacao2[101];
 
 //  Variaveis globais do usuario
 char nome[101] = "";
@@ -65,8 +76,10 @@ void registrar_usuario(void);
 void menu_login(void);
 //  Funcao que procura um lugar vazio no historico
 int verificador_de_historico(void);
-//  Funcao do historico
+//  Funcao que printa o historico
 void printar_historico(void);
+//  Funcao do historico
+void descrever_historico(int posicao);
 
 //  Funcao main
 int main()
@@ -251,6 +264,9 @@ void cadastrar_produto(int posicao)
         scanf("%f", &produto[posicao].preco_repor);
         setbuf(stdin, NULL);
         produto[posicao].codigo = gerador_de_codigo();
+        strcpy(informacao1, produto[posicao].nome);
+        strcpy(informacao2, " foi adicionado a lista");
+        descrever_historico(verificador_de_historico());
         printf("Cadastro realizado com sucesso! \n");
     }
 }
@@ -300,6 +316,9 @@ void alterar_produto(int codigo)
         printf("Novo Preco para repor: ");
         scanf("%f", &produto[codigo].preco_repor);
         setbuf(stdin, NULL);
+        strcpy(informacao1, produto[codigo].nome);
+        strcpy(informacao2, " foi alterado");
+        descrever_historico(verificador_de_historico());
         printf("Poduto alterado com sucesso \n");
     }
 }
@@ -323,6 +342,9 @@ void excluir_produto(int codigo)
             produto[codigo].preco = 0;
             produto[codigo].preco_repor = 0;
             produto[codigo].quantidade = 0;
+            strcpy(informacao1, produto[codigo].nome);
+            strcpy(informacao2, " foi excluido");
+            descrever_historico(verificador_de_historico());
             printf("Produto excluido com sucesso! \n");
         }
         else
@@ -398,6 +420,9 @@ void repor_produto(int codigo)
             {
                 produto[codigo].quantidade = produto[codigo].quantidade + quantidade;
                 capital = capital - valor;
+                strcpy(informacao1, produto[codigo].nome);
+                strcpy(informacao2, " foi reposto");
+                descrever_historico(verificador_de_historico());
                 printf("Reposicao concluida! \n");
             }
             else
@@ -444,7 +469,7 @@ void formatar_lista(void)
         produto[i].preco = 0;
         produto[i].preco_repor = 0;
         produto[i].quantidade = 0;
-        strcpy(produto[i].historico, "");
+        strcpy(historico[i].descricao, "");
     }
     variavel_codigo = 0;
     variavel_historico = 0;
@@ -490,6 +515,9 @@ void registrar_usuario(void)
     printf("Digite seu capital inicial: ");
     scanf("%f", &capital);
     setbuf(stdin, NULL);
+    strcpy(informacao1, nome);
+    strcpy(informacao2, " foi cadastrado com sucesso");
+    descrever_historico(verificador_de_historico());
     printf("Usuario registrado com sucesso! \n");
 }
 
@@ -512,6 +540,9 @@ void vender_produto_a_vista(int codigo, int quantidade)
     desconto = (quantidade * produto[codigo].preco) * 0.15;
     capital_ganho = (quantidade * produto[codigo].preco) - desconto;
     capital = capital + capital_ganho;
+    strcpy(informacao1, produto[codigo].nome);
+    strcpy(informacao2, " foi vendido");
+    descrever_historico(verificador_de_historico());
     printf("Voce ganhou %.2f reais de desconto! \n", desconto);
     printf("Venda realizada com sucesso! \n");
     printf("Capital ganho: %.2f \n", capital_ganho);
@@ -531,6 +562,9 @@ void vender_produto_parcelado(int codigo, int quantidade)
         printf("Sem juros! \n");
         produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
         capital_ganho = quantidade * produto[codigo].preco;
+        strcpy(informacao1, produto[codigo].nome);
+        strcpy(informacao2, " foi vendido");
+        descrever_historico(verificador_de_historico());
         printf("Venda realizada com sucesso! \n");
         printf("Capital ganho: %.2f \n", capital_ganho);
     }
@@ -542,6 +576,9 @@ void vender_produto_parcelado(int codigo, int quantidade)
             produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
             juros = (quantidade * produto[codigo].preco) * 0.05;
             capital_ganho = (quantidade * produto[codigo].preco) + juros;
+            strcpy(informacao1, produto[codigo].nome);
+            strcpy(informacao2, " foi vendido");
+            descrever_historico(verificador_de_historico());
             printf("Venda realizada com sucesso! \n");
             printf("Capital ganho: %.2f \n", capital_ganho);
         }
@@ -553,6 +590,9 @@ void vender_produto_parcelado(int codigo, int quantidade)
                 produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
                 juros = (quantidade * produto[codigo].preco) * 0.08;
                 capital_ganho = (quantidade * produto[codigo].preco) + juros;
+                strcpy(informacao1, produto[codigo].nome);
+                strcpy(informacao2, " foi vendido");
+                descrever_historico(verificador_de_historico());
                 printf("Venda realizada com sucesso! \n");
                 printf("Capital ganho: %.2f \n", capital_ganho);
             }
@@ -564,6 +604,9 @@ void vender_produto_parcelado(int codigo, int quantidade)
                     produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
                     juros = (quantidade * produto[codigo].preco) * 0.10;
                     capital_ganho = (quantidade * produto[codigo].preco) + juros;
+                    strcpy(informacao1, produto[codigo].nome);
+                    strcpy(informacao2, " foi vendido");
+                    descrever_historico(verificador_de_historico());
                     printf("Venda realizada com sucesso! \n");
                     printf("Capital ganho: %.2f \n", capital_ganho);
                 }
@@ -598,9 +641,20 @@ void printar_historico(void)
     printf("========HISTORICO======== \n");
     for(loop = 0; loop <= 100; loop++)
     {
-        if(strcmp(produto[loop].historico, "") != 0)
+        if(strcmp(historico[loop].descricao, "") != 0)
         {
-            printf("%s \n", produto[loop].historico);
+            printf("%s \n", historico[loop].descricao);
         }
     }
+}
+
+//  Funcao que descreve o historico
+void descrever_historico(int posicao)
+{
+    //  Retirando o /0 do nome
+    tamanho_nome = strlen(informacao1);
+    informacao1[tamanho_nome - 1] = ' ';
+    //  Concatenando os nomes no historico
+    strcat(informacao1, informacao2);
+    strcpy(historico[posicao].descricao, informacao1);
 }
