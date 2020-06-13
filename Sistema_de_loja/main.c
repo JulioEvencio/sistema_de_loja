@@ -307,6 +307,9 @@ void alterar_produto(int codigo)
     {
         printf("========ALTERAR======== \n");
         localizar_produto(codigo);
+        strcpy(informacao1, produto[codigo].nome);
+        strcpy(informacao2, " foi alterado");
+        descrever_historico(verificador_de_historico());
         printf("Novo Nome: ");
         fgets(produto[codigo].nome, 101, stdin);
         setbuf(stdin, NULL);
@@ -316,10 +319,7 @@ void alterar_produto(int codigo)
         printf("Novo Preco para repor: ");
         scanf("%f", &produto[codigo].preco_repor);
         setbuf(stdin, NULL);
-        strcpy(informacao1, produto[codigo].nome);
-        strcpy(informacao2, " foi alterado");
-        descrever_historico(verificador_de_historico());
-        printf("Poduto alterado com sucesso \n");
+        printf("Produto alterado com sucesso \n");
     }
 }
 
@@ -337,14 +337,14 @@ void excluir_produto(int codigo)
         setbuf(stdin, NULL);
         if(opcao == 0)
         {
+            strcpy(informacao1, produto[codigo].nome);
+            strcpy(informacao2, " foi excluido");
+            descrever_historico(verificador_de_historico());
             strcpy(produto[codigo].nome, "");
             produto[codigo].codigo = 0;
             produto[codigo].preco = 0;
             produto[codigo].preco_repor = 0;
             produto[codigo].quantidade = 0;
-            strcpy(informacao1, produto[codigo].nome);
-            strcpy(informacao2, " foi excluido");
-            descrever_historico(verificador_de_historico());
             printf("Produto excluido com sucesso! \n");
         }
         else
