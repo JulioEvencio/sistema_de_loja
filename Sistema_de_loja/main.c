@@ -234,18 +234,49 @@ int gerador_de_codigo(void)
 int verificador_de_produto(void)
 {
     int codigo, loop;
-    printf("Digite o codigo do produto: ");
-    scanf("%d", &codigo);
+    char produto1[101];
+    printf("========LOCALIZANDO PRODUTO======== \n");
+    printf("Procurar produto pelo: \n");
+    printf("1. Nome \n");
+    printf("2. Codigo \n");
+    printf("Opcao: ");
+    scanf("%d", &loop);
     setbuf(stdin, NULL);
-    for(loop = 0; loop <= 100; loop++)
+
+    switch(loop)
     {
-        if(produto[loop].codigo == codigo)
-        {
-            return loop;
-        }
+        case(1):
+            printf("Digite o nome do produto: ");
+            fgets(produto1, 101, stdin);
+            setbuf(stdin, NULL);
+            for(loop = 0; loop <= 100; loop++)
+            {
+                if(strcmp(produto[loop].nome, produto1) == 0)
+                {
+                    return loop;
+                }
+            }
+            printf("Produto nao encontrado! \n");
+            return -1;
+            break;
+        case(2):
+            printf("Digite o codigo do produto: ");
+            scanf("%d", &codigo);
+            setbuf(stdin, NULL);
+            for(loop = 0; loop <= 100; loop++)
+            {
+                if(produto[loop].codigo == codigo)
+                {
+                    return loop;
+                }
+            }
+            printf("Produto nao encontrado! \n");
+            return -1;
+            break;
+        default:
+            printf("Opcao invalida! \n");
+            return -1;
     }
-    printf("Produto nao encontrado! \n");
-    return -1;
 }
 
 //  Funcao que cadastra o produto
