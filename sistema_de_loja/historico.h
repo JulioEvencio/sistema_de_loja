@@ -8,7 +8,7 @@
 /*  Variaveis */
 
 /*  Structs */
-struct Tipo_historico
+struct tipo_historico
 {
     char descricao[HISTORICO_DESCRICAO];
     int tamanho_nome;
