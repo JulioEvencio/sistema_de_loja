@@ -16,7 +16,7 @@ int login_do_usuario(void)
     fgets(pass, 101, stdin);
     setbuf(stdin, NULL);
 
-    if(strcmp(usuario, user) == 0 && strcmp(pass, usuario.senha) == 0)
+    if(strcmp(usuario.login, user) == 0 && strcmp(pass, usuario.senha) == 0)
     {
         printf("Logado com sucesso! \n");
         return -1;
