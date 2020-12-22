@@ -8,27 +8,40 @@
 
 O usuário iniciará na tela acima, nela ele terá que fazer um pequeno cadastro para poder usar a loja
 
-Imagem 2:
+### Cadastro de usuário
+
+***Cadastro com sucesso***
 
 ![Captura de tela de 2020-12-22 19-05-19](https://user-images.githubusercontent.com/65574850/102938412-0af67900-448b-11eb-867f-85c1d1fb7a4b.png)
 
-asd
+Aqui o usuário definirá seu nome, seu nome de login e sua senha
 
-Imagem 3:
+***Cadastro inválido!***
 
 ![Captura de tela de 2020-12-22 19-05-42](https://user-images.githubusercontent.com/65574850/102938439-18136800-448b-11eb-977f-a571eca9e434.png)
 
-Imagem 4:
+### Login
+
+Apenas o login...
 
 ![Captura de tela de 2020-12-22 19-05-52](https://user-images.githubusercontent.com/65574850/102938461-23669380-448b-11eb-92f4-da93c2cbae89.png)
 
-Imagem 5:
+
+### Menu da loja
 
 ![Captura de tela de 2020-12-22 19-05-57](https://user-images.githubusercontent.com/65574850/102938484-2a8da180-448b-11eb-92cc-02957cc4a74a.png)
 
-Imagem 6:
+É através desse menu que o usuário poderá fazer as ações que deseja
+
+### Cadastrar produto
+
+Aqui o usuário pode fazer cadastro de produto para que a loja seja capaz de reconher
 
 ![Captura de tela de 2020-12-22 19-06-30](https://user-images.githubusercontent.com/65574850/102938493-31b4af80-448b-11eb-89de-67c8165e532a.png)
+
+***OBS***
+
+Cadastrar produto não aumenta a quantidade dela no estoque, apenas faz com que o sistema o reconheça
 
 Imagem 7:
 
