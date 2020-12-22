@@ -16,7 +16,7 @@ int login_do_usuario(void)
     fgets(pass, 101, stdin);
     setbuf(stdin, NULL);
 
-    if(strcmp(usuario, user) == 0 && strcmp(pass, senha) == 0)
+    if(strcmp(usuario, user) == 0 && strcmp(pass, usuario.senha) == 0)
     {
         printf("Logado com sucesso! \n");
         return -1;
@@ -32,18 +32,18 @@ void registrar_usuario(void)
 {
     printf("========REGISTRAR======== \n");
     printf("Nome: ");
-    fgets(nome, 101, stdin);
+    fgets(usuario.nome, 101, stdin);
     setbuf(stdin, NULL);
     printf("Usuario: ");
-    fgets(usuario, 101, stdin);
+    fgets(usuario.login, 101, stdin);
     setbuf(stdin, NULL);
     printf("Senha: ");
-    fgets(senha, 101, stdin);
+    fgets(usuario.senha, 101, stdin);
     setbuf(stdin, NULL);
     printf("Digite seu capital inicial: ");
-    scanf("%f", &capital);
+    scanf("%f", &usuario.capital);
     setbuf(stdin, NULL);
-    strcpy(informacao1, nome);
+    strcpy(informacao1, usuario.nome);
     strcpy(informacao2, " foi cadastrado com sucesso");
     descrever_historico();
     printf("Usuario registrado com sucesso! \n");

@@ -15,6 +15,7 @@ struct tipo_usuario
     char nome[USUARIO_NOME];
     char login[USUARIO_LOGIN];
     char senha[USUARIO_SENHA];
+    float capital;
 };
 typedef struct tipo_usuario Usuario;
 

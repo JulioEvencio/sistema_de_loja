@@ -2,9 +2,6 @@
 #include "sistema.h"
 #include "historico.h"
 
-/*  Variaveis */
-Historico historico[HISTORICO_CAPACIDADE];
-
 /*  Funcoes */
 //  Funcao que printa o historico
 void printar_historico(void)

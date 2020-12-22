@@ -1,4 +1,6 @@
 /*  Sistema de loja */
+
+//  Bibliotecas
 #include "sistema.h"
 #include "sistema.c"
 #include "usuario.h"
@@ -7,9 +9,6 @@
 #include "produto.c"
 #include "historico.h"
 #include "historico.c"
-
-//  Variavel global do codigo
-int variavel_codigo;
 
 //  Funcao main
 int main()
@@ -54,8 +53,8 @@ int main()
     {
         //  Informacoes do usuario
         printf("========USUARIO======== \n");
-        printf("Nome: %s", nome);
-        printf("Dinheiro: %.2f \n\n", capital);
+        printf("Nome: %s", usuario.nome);
+        printf("Dinheiro: %.2f \n\n", usuario.capital);
 
         //  Printando o menu
         printar_menu();

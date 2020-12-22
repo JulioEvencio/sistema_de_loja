@@ -9,6 +9,13 @@
 /*  Constantes */
 
 /*  Variaveis */
+int variavel_codigo;
+int tamanho_nome;
+char informacao1[100];
+char informacao2[100];
+Usuario usuario;
+Produto produto[100];
+Historico historico[100];
 
 /*  Structs */
 

@@ -2,9 +2,6 @@
 #include "sistema.h"
 #include "produto.h"
 
-/*  Variavies */
-Produto produto[PRODUTO_QUANTIDADE];
-
 /*  Funcoes */
 //  Funcao que verifica um local vazio na lista
 int verificador_de_local_vazio(void)
@@ -241,7 +238,7 @@ void repor_produto(int codigo)
         scanf("%d", &quantidade);
         setbuf(stdin, NULL);
         valor = quantidade * produto[codigo].preco_repor;
-        if(valor > capital)
+        if(valor > usuario.capital)
         {
             printf("Dinheiro insuficiente! \n");
         }
@@ -250,7 +247,7 @@ void repor_produto(int codigo)
             if(quantidade > 0)
             {
                 produto[codigo].quantidade = produto[codigo].quantidade + quantidade;
-                capital = capital - valor;
+                usuario.capital -= valor;
                 strcpy(informacao1, produto[codigo].nome);
                 strcpy(informacao2, " foi reposto");
                 descrever_historico();
@@ -272,7 +269,7 @@ void vender_produto_a_vista(int codigo, int quantidade)
     produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
     desconto = (quantidade * produto[codigo].preco) * 0.15;
     capital_ganho = (quantidade * produto[codigo].preco) - desconto;
-    capital = capital + capital_ganho;
+    usuario.capital = usuario.capital + capital_ganho;
     strcpy(informacao1, produto[codigo].nome);
     strcpy(informacao2, " foi vendido");
     descrever_historico();
@@ -350,5 +347,5 @@ void vender_produto_parcelado(int codigo, int quantidade)
             }
         }
     }
-    capital = capital + capital_ganho;
+    usuario.capital += + capital_ganho;
 }
