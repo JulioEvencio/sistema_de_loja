@@ -5,24 +5,6 @@
 #include "sistema.h"
 #include "sistema.c"
 
-//  Struct global do produto
-typedef struct Lista_Produto
-{
-    int codigo;
-    char nome[101];
-    float preco;
-    float preco_repor;
-    int quantidade;
-}Tipo_Produto;
-Tipo_Produto produto[100];
-
-//  Struct global do historico
-typedef struct Tipo_historico
-{
-    char descricao[101];
-}Historico;
-Historico historico[100];
-
 //  Variavel global do codigo
 int variavel_codigo;
 
