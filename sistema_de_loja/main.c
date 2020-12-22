@@ -1,23 +1,15 @@
 /*  Sistema de loja */
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "sistema.h"
 #include "sistema.c"
+#include "usuario.h"
+#include "usuario.c"
+#include "produto.h"
+#include "produto.c"
+#include "historico.h"
+#include "historico.c"
 
 //  Variavel global do codigo
 int variavel_codigo;
-
-//  Variavel global do historico
-int tamanho_nome;
-char informacao1[101];
-char informacao2[101];
-
-//  Variaveis globais do usuario
-char nome[101] = "";
-char usuario[101] = "";
-char senha[101] = "";
-float capital;
 
 /*  Funcoes */
 //  Funcao que printa o menu

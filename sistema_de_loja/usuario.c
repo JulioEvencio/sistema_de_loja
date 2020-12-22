@@ -1,4 +1,3 @@
 //  Bibliotecas
 #include "sistema.h"
-
-/*  Funcoes */
+#include "usuario.h"
