@@ -1,15 +1,18 @@
-# sistema_de_loja
- Sistema de loja
+# Sistema de Loja
+ ## O que é?
+ Este programa é um sistema simples que tem as funcionalidades básicas de uma loja. Este projeto foi desenvolvido para a Revisão Geral de ICC (Introdução à Ciência da Computação)
 
-Imagens
-
-Imagem 1:
+### Menu de Login
 
 ![Captura de tela de 2020-12-22 19-04-48](https://user-images.githubusercontent.com/65574850/102938394-029e3e00-448b-11eb-9e7c-d8357ff58d09.png)
+
+O usuário iniciará na tela acima, nela ele terá que fazer um pequeno cadastro para poder usar a loja
 
 Imagem 2:
 
 ![Captura de tela de 2020-12-22 19-05-19](https://user-images.githubusercontent.com/65574850/102938412-0af67900-448b-11eb-867f-85c1d1fb7a4b.png)
+
+asd
 
 Imagem 3:
 
