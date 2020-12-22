@@ -1,19 +1,18 @@
 //  Bibliotecas
 #include "sistema.h"
-#include "usuario.h"
 
 /*  Funcoes */
 //  Funcao que faz o login do usuario
 int login_do_usuario(void)
 {
-    char user[101], pass[101];
+    char user[USUARIO_LOGIN], pass[USUARIO_SENHA];
 
     printf("========LOGIN======== \n");
     printf("Usuario: ");
-    fgets(user, 101, stdin);
+    fgets(user, USUARIO_LOGIN, stdin);
     setbuf(stdin, NULL);
     printf("Senha: ");
-    fgets(pass, 101, stdin);
+    fgets(pass, USUARIO_SENHA, stdin);
     setbuf(stdin, NULL);
 
     if(strcmp(usuario.login, user) == 0 && strcmp(pass, usuario.senha) == 0)
@@ -32,13 +31,13 @@ void registrar_usuario(void)
 {
     printf("========REGISTRAR======== \n");
     printf("Nome: ");
-    fgets(usuario.nome, 101, stdin);
+    fgets(usuario.nome, USUARIO_NOME, stdin);
     setbuf(stdin, NULL);
     printf("Usuario: ");
-    fgets(usuario.login, 101, stdin);
+    fgets(usuario.login, USUARIO_LOGIN, stdin);
     setbuf(stdin, NULL);
     printf("Senha: ");
-    fgets(usuario.senha, 101, stdin);
+    fgets(usuario.senha, USUARIO_SENHA, stdin);
     setbuf(stdin, NULL);
     printf("Digite seu capital inicial: ");
     scanf("%f", &usuario.capital);

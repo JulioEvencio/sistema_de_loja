@@ -4,6 +4,10 @@
 /*  Constantes */
 #define PRODUTO_QUANTIDADE 100
 #define PRODUTO_NOME 50
+#define PRODUTO_DESCONTO 0.15
+#define PRODUTO_JUROS_1 0.05
+#define PRODUTO_JUROS_2 0.08
+#define PRODUTO_JUROS_3 0.10
 
 /*  Variaveis */
 

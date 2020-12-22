@@ -17,8 +17,8 @@ int tamanho_nome;
 char informacao1[100];
 char informacao2[100];
 Usuario usuario;
-Produto produto[100];
-Historico historico[100];
+Produto produto[PRODUTO_QUANTIDADE];
+Historico historico[HISTORICO_CAPACIDADE];
 
 /*  Structs */
 

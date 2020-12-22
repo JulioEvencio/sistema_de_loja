@@ -3,11 +3,8 @@
 //  Bibliotecas
 #include "sistema.h"
 #include "sistema.c"
-#include "usuario.h"
 #include "usuario.c"
-#include "produto.h"
 #include "produto.c"
-#include "historico.h"
 #include "historico.c"
 
 //  Funcao main

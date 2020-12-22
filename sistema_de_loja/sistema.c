@@ -90,7 +90,7 @@ void confirmar_formatacao(void)
 void formatar_lista(void)
 {
     int i;
-    for(i = 0; i <= 100; i++)
+    for(i = 0; i <= PRODUTO_QUANTIDADE; i++)
     {
         produto[i].codigo = 0;
         strcpy(produto[i].nome, "");

@@ -1,13 +1,12 @@
 //  Bibliotecas
 #include "sistema.h"
-#include "produto.h"
 
 /*  Funcoes */
 //  Funcao que verifica um local vazio na lista
 int verificador_de_local_vazio(void)
 {
     int loop;
-    for(loop = 0; loop <= 100; loop++)
+    for(loop = 0; loop <= PRODUTO_QUANTIDADE; loop++)
     {
         if(produto[loop].codigo == 0)
         {
@@ -46,7 +45,7 @@ int verificador_de_produto(void)
             printf("Digite o nome do produto: ");
             fgets(produto1, 101, stdin);
             setbuf(stdin, NULL);
-            for(loop = 0; loop <= 100; loop++)
+            for(loop = 0; loop <= PRODUTO_QUANTIDADE; loop++)
             {
                 if(strcmp(produto[loop].nome, produto1) == 0)
                 {
@@ -60,7 +59,7 @@ int verificador_de_produto(void)
             printf("Digite o codigo do produto: ");
             scanf("%d", &codigo);
             setbuf(stdin, NULL);
-            for(loop = 0; loop <= 100; loop++)
+            for(loop = 0; loop <= PRODUTO_QUANTIDADE; loop++)
             {
                 if(produto[loop].codigo == codigo)
                 {
@@ -83,7 +82,7 @@ void cadastrar_produto(int posicao)
     {
         printf("========CADASTRAR======== \n");
         printf("Nome: ");
-        fgets(produto[posicao].nome, 101, stdin);
+        fgets(produto[posicao].nome, PRODUTO_NOME, stdin);
         setbuf(stdin, NULL);
         printf("Preco: ");
         scanf("%f", &produto[posicao].preco);
@@ -119,7 +118,7 @@ void listar_produto(void)
 {
     int i;
     printf("========PRODUTOS======== \n");
-    for(i = 0; i <= 100; i++)
+    for(i = 0; i <= PRODUTO_QUANTIDADE; i++)
     {
         if(produto[i].codigo != 0)
         {
@@ -139,7 +138,7 @@ void alterar_produto(int codigo)
         strcpy(informacao2, " foi alterado");
         descrever_historico();
         printf("Novo Nome: ");
-        fgets(produto[codigo].nome, 101, stdin);
+        fgets(produto[codigo].nome, PRODUTO_NOME, stdin);
         setbuf(stdin, NULL);
         printf("Novo Preco: ");
         scanf("%f", &produto[codigo].preco);
@@ -267,7 +266,7 @@ void vender_produto_a_vista(int codigo, int quantidade)
     float capital_ganho, desconto;
     printf("========A VISTA======== \n");
     produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
-    desconto = (quantidade * produto[codigo].preco) * 0.15;
+    desconto = (quantidade * produto[codigo].preco) * PRODUTO_DESCONTO;
     capital_ganho = (quantidade * produto[codigo].preco) - desconto;
     usuario.capital = usuario.capital + capital_ganho;
     strcpy(informacao1, produto[codigo].nome);
@@ -304,7 +303,7 @@ void vender_produto_parcelado(int codigo, int quantidade)
         {
             printf("5 por cento de juros! \n");
             produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
-            juros = (quantidade * produto[codigo].preco) * 0.05;
+            juros = (quantidade * produto[codigo].preco) * PRODUTO_JUROS_1;
             capital_ganho = (quantidade * produto[codigo].preco) + juros;
             strcpy(informacao1, produto[codigo].nome);
             strcpy(informacao2, " foi vendido");
@@ -318,7 +317,7 @@ void vender_produto_parcelado(int codigo, int quantidade)
             {
                 printf("8 por cento de juros! \n");
                 produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
-                juros = (quantidade * produto[codigo].preco) * 0.08;
+                juros = (quantidade * produto[codigo].preco) * PRODUTO_JUROS_2;
                 capital_ganho = (quantidade * produto[codigo].preco) + juros;
                 strcpy(informacao1, produto[codigo].nome);
                 strcpy(informacao2, " foi vendido");
@@ -332,7 +331,7 @@ void vender_produto_parcelado(int codigo, int quantidade)
                 {
                     printf("10 por cento de juros! \n");
                     produto[codigo].quantidade = produto[codigo].quantidade - quantidade;
-                    juros = (quantidade * produto[codigo].preco) * 0.10;
+                    juros = (quantidade * produto[codigo].preco) * PRODUTO_JUROS_3;
                     capital_ganho = (quantidade * produto[codigo].preco) + juros;
                     strcpy(informacao1, produto[codigo].nome);
                     strcpy(informacao2, " foi vendido");
