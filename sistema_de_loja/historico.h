@@ -18,5 +18,7 @@ struct Tipo_historico
 typedef struct tipo_historico Historico;
 
 /*  Funcoes */
+void printar_historico(void);
+void descrever_historico(void);
 
 #endif // HISTORICO_H_INCLUDED

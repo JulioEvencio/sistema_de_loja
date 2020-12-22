@@ -11,50 +11,6 @@
 //  Variavel global do codigo
 int variavel_codigo;
 
-/*  Funcoes */
-//  Funcao que printa o menu
-void printar_menu(void);
-//  Fun��o que ler a opcao do usuario
-void leitura_da_opcao(int op);
-//  Funcao que verifica um local vazio na lista
-int verificador_de_local_vazio(void);
-//  Funcao que gera codigos para os produtos
-int gerador_de_codigo(void);
-//  Funcap que verifica se um produto existe
-int verificador_de_produto(void);
-//  Funcao que cadastra o produto
-void cadastrar_produto(int posicao);
-//  Funcao que localiza produtos
-void localizar_produto(int posicao);
-//  Listar produtos
-void listar_produto(void);
-//  Alterar produto
-void alterar_produto(int codigo);
-//  Excluir produto
-void excluir_produto(int codigo);
-//  Vender produto
-void vender_produto(int codigo);
-//  Vender produto a vista
-void vender_produto_a_vista(int codigo, int quantidade);
-//  Vender produto parcelado
-void vender_produto_parcelado(int codigo, int quantidade);
-//  Repor produto
-void repor_produto(int codigo);
-//  Confirmar formatacao
-void confirmar_formatacao(void);
-//  Funcao que limpa a lista de produto
-void formatar_lista(void);
-//  Login do usuario
-int login_do_usuario(void);
-//  Registrar usuario
-void registrar_usuario(void);
-//  Menu do login
-void menu_login(void);
-//  Funcao que printa o historico
-void printar_historico(void);
-//  Funcao do historico
-void descrever_historico(void);
-
 //  Funcao main
 int main()
 {

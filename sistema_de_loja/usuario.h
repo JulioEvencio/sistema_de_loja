@@ -19,5 +19,7 @@ struct tipo_usuario
 typedef struct tipo_usuario Usuario;
 
 /*  Funcoes */
+int login_do_usuario(void);
+void registrar_usuario(void);
 
 #endif // USUARIO_H_INCLUDED

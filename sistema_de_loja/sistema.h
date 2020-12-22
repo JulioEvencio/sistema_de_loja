@@ -13,5 +13,13 @@
 /*  Structs */
 
 /*  Funcoes */
+//  Menu
+void printar_menu(void);
+void leitura_da_opcao(int op);
+//  Formatacao
+void confirmar_formatacao(void);
+void formatar_lista(void);
+//  Login
+void menu_login(void);
 
 #endif // SISTEMA_H_INCLUDED
