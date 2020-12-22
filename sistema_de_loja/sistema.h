@@ -1,0 +1,6 @@
+#ifndef SISTEMA_H_INCLUDED
+#define SISTEMA_H_INCLUDED
+
+//  Code
+
+#endif // SISTEMA_H_INCLUDED

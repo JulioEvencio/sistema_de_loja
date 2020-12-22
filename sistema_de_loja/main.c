@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "sistema.h"
+#include "sistema.c"
 
 //  Struct global do produto
 typedef struct Lista_Produto
@@ -38,7 +40,7 @@ float capital;
 /*  Funcoes */
 //  Funcao que printa o menu
 void printar_menu(void);
-//  Função que ler a opcao do usuario
+//  Funï¿½ï¿½o que ler a opcao do usuario
 void leitura_da_opcao(int op);
 //  Funcao que verifica um local vazio na lista
 int verificador_de_local_vazio(void);
