@@ -2,13 +2,13 @@
  ## O que é?
  Este programa é um sistema simples que tem as funcionalidades básicas de uma loja. Este projeto foi desenvolvido para a Revisão Geral de ICC (Introdução à Ciência da Computação)
 
-### Menu de Login
+## Menu de Login
 
 ![Captura de tela de 2020-12-22 19-04-48](https://user-images.githubusercontent.com/65574850/102938394-029e3e00-448b-11eb-9e7c-d8357ff58d09.png)
 
 O usuário iniciará na tela acima, nela ele terá que fazer um pequeno cadastro para poder usar a loja
 
-### Cadastro de usuário
+## Cadastro de usuário
 
 ***Cadastro com sucesso***
 
@@ -20,20 +20,20 @@ Aqui o usuário definirá seu nome, seu nome de login e sua senha
 
 ![Captura de tela de 2020-12-22 19-05-42](https://user-images.githubusercontent.com/65574850/102938439-18136800-448b-11eb-977f-a571eca9e434.png)
 
-### Login
+## Login
 
 Apenas o login...
 
 ![Captura de tela de 2020-12-22 19-05-52](https://user-images.githubusercontent.com/65574850/102938461-23669380-448b-11eb-92f4-da93c2cbae89.png)
 
 
-### Menu da loja
+## Menu da loja
 
 ![Captura de tela de 2020-12-22 19-05-57](https://user-images.githubusercontent.com/65574850/102938484-2a8da180-448b-11eb-92cc-02957cc4a74a.png)
 
 É através desse menu que o usuário poderá fazer as ações que deseja
 
-### Cadastrar produto
+## Cadastrar produto
 
 Aqui o usuário pode fazer cadastro de produto para que a loja seja capaz de reconher
 
