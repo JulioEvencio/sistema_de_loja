@@ -21,6 +21,12 @@ Produto produto[PRODUTO_QUANTIDADE];
 Historico historico[HISTORICO_CAPACIDADE];
 
 /*  Structs */
+enum tipo_opcoes
+{
+    fechar_jogo,
+    login,
+    registrar
+};
 
 /*  Funcoes */
 //  Menu

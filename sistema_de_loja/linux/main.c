@@ -25,15 +25,14 @@ int main()
         system("clear");
         switch(opcao)
         {
-            case(1):
+            case(login):
                 opcao = login_do_usuario();
                 break;
-            case(2):
+            case(registrar):
                 registrar_usuario();
                 break;
-            case(0):
+            case(fechar_jogo):
                 printf("Obrigado por utilizar este programa! \n");
-                return 0;
                 break;
             default:
                 printf("Opcao invalida! \n");
@@ -47,7 +46,7 @@ int main()
     /*  formatar_lista(); Por motivos misteriosos o formatar ta zerando o dinheiro*/
 
     //  Loop do programa
-    do
+    while(opcao != fechar_jogo)
     {
         //  Informacoes do usuario
         printf("========USUARIO======== \n");
@@ -72,7 +71,7 @@ int main()
         getchar();
         //  Limpador de tela
         system("clear");
-    }while(opcao != 0);
+    }
 
     return 0;
 }
