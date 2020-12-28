@@ -112,3 +112,16 @@ void menu_login(void)
     printf("0. Fechar programa \n");
     printf("Opcao: ");
 }
+
+/*  Geral */
+//  Funcao que remove o 'ENTERr' das palavras
+void remover_enter(char palavra[], int tamanho)
+{
+    for(int i = 0; i < tamanho; i++)
+    {
+        if(palavra[i] == '\n')
+        {
+            palavra[i] = '\0';
+        }
+    }
+}

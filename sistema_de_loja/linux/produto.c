@@ -44,6 +44,7 @@ int verificador_de_produto(void)
         case(1):
             printf("Digite o nome do produto: ");
             fgets(produto1, PRODUTO_NOME, stdin);
+            remover_enter(produto1, PRODUTO_NOME);
             setbuf(stdin, NULL);
             for(loop = 0; loop <= PRODUTO_QUANTIDADE; loop++)
             {
@@ -83,6 +84,7 @@ void cadastrar_produto(int posicao)
         printf("========CADASTRAR======== \n");
         printf("Nome: ");
         fgets(produto[posicao].nome, PRODUTO_NOME, stdin);
+        remover_enter(produto[posicao].nome, PRODUTO_NOME);
         setbuf(stdin, NULL);
         printf("Preco: ");
         scanf("%f", &produto[posicao].preco);
@@ -139,6 +141,7 @@ void alterar_produto(int codigo)
         descrever_historico();
         printf("Novo Nome: ");
         fgets(produto[codigo].nome, PRODUTO_NOME, stdin);
+        remover_enter(produto[codigo].nome, PRODUTO_NOME);
         setbuf(stdin, NULL);
         printf("Novo Preco: ");
         scanf("%f", &produto[codigo].preco);
@@ -201,6 +204,7 @@ void vender_produto(int codigo)
             printf("0. Cancelar \n");
             printf("Opcao: ");
             scanf("%d", &opcao);
+            setbuf(stdin, NULL);
             switch(opcao)
             {
                 case(1):

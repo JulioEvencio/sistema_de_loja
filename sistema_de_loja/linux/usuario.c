@@ -10,9 +10,11 @@ int login_do_usuario(void)
     printf("========LOGIN======== \n");
     printf("Usuario: ");
     fgets(user, USUARIO_LOGIN, stdin);
+    remover_enter(user, USUARIO_LOGIN);
     setbuf(stdin, NULL);
     printf("Senha: ");
     fgets(pass, USUARIO_SENHA, stdin);
+    remover_enter(pass, USUARIO_SENHA);
     setbuf(stdin, NULL);
 
     if(strcmp(usuario.login, user) == 0 && strcmp(pass, usuario.senha) == 0)
@@ -32,12 +34,15 @@ void registrar_usuario(void)
     printf("========REGISTRAR======== \n");
     printf("Nome: ");
     fgets(usuario.nome, USUARIO_NOME, stdin);
+    remover_enter(usuario.nome, USUARIO_NOME);
     setbuf(stdin, NULL);
     printf("Usuario: ");
     fgets(usuario.login, USUARIO_LOGIN, stdin);
+    remover_enter(usuario.login, USUARIO_LOGIN);
     setbuf(stdin, NULL);
     printf("Senha: ");
     fgets(usuario.senha, USUARIO_SENHA, stdin);
+    remover_enter(usuario.senha, USUARIO_SENHA);
     setbuf(stdin, NULL);
     printf("Digite seu capital inicial: ");
     scanf("%f", &usuario.capital);

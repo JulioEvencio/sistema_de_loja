@@ -62,5 +62,7 @@ void confirmar_formatacao(void);
 void formatar_lista(void);
 //  Login
 void menu_login(void);
+//  Geral
+void remover_enter(char palavra[], int tamanho);
 
 #endif // SISTEMA_H_INCLUDED
