@@ -51,8 +51,8 @@ int main()
     {
         //  Informacoes do usuario
         printf("========USUARIO======== \n");
-        printf("Nome: %s", usuario.nome);
-        printf("Dinheiro: %.2f \n\n", usuario.capital);
+        printf("Nome: %s \n", usuario.nome);
+        printf("Dinheiro: %.2f \n", usuario.capital);
 
         //  Printando o menu
         printar_menu();
