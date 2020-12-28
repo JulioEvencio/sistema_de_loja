@@ -25,34 +25,34 @@ void leitura_da_opcao(int op)
 {
     switch(op)
     {
-        case(1):
+        case(cadastrar):
             cadastrar_produto(verificador_de_local_vazio());
             break;
-        case(2):
+        case(localizar):
             localizar_produto(verificador_de_produto());
             break;
-        case(3):
+        case(listar):
             listar_produto();
             break;
-        case(4):
+        case(alterar):
             alterar_produto(verificador_de_produto());
             break;
-        case(5):
+        case(excluir):
             excluir_produto(verificador_de_produto());
             break;
-        case(6):
+        case(vender):
             vender_produto(verificador_de_produto());
             break;
-        case(7):
+        case(repor):
             repor_produto(verificador_de_produto());
             break;
-        case(8):
+        case(historico_printar):
             printar_historico();
             break;
-        case(9):
+        case(formatar):
             confirmar_formatacao();
             break;
-        case(0):
+        case(fechar_loja):
             printf("Obrigado por utilizar este programa! \n");
             break;
         default:
@@ -74,11 +74,11 @@ void confirmar_formatacao(void)
     setbuf(stdin, NULL);
     switch(opcao)
     {
-        case(34851):
+        case(formatar_confirmar):
             formatar_lista();
             printf("Lista formatada com sucesso! \n");
             break;
-        case(0):
+        case(cancelar_formatacao):
             printf("Ainda bem que mudou de ideia, voce perderia todo seu trabalho de ter digitado! \n");
             break;
         default:

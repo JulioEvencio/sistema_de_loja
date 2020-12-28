@@ -21,11 +21,32 @@ Produto produto[PRODUTO_QUANTIDADE];
 Historico historico[HISTORICO_CAPACIDADE];
 
 /*  Structs */
-enum tipo_opcoes
+//  Menu principal
+enum menu_principal
 {
-    fechar_jogo,
+    fechar_loja,
     login,
     registrar
+};
+//  Menu da loja
+enum menu_loja
+{
+    fechar_loja,
+    cadastrar,
+    localizar,
+    listar,
+    alterar,
+    excluir,
+    vender,
+    repor,
+    historico_printar,
+    formatar
+};
+//  Formatar lista
+enum menu_formatar
+{
+    cancelar_formatacao,
+    formatar_confirmar= 34851
 };
 
 /*  Funcoes */
