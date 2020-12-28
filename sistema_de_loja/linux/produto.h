@@ -8,6 +8,13 @@
 #define PRODUTO_JUROS_1 0.05
 #define PRODUTO_JUROS_2 0.08
 #define PRODUTO_JUROS_3 0.10
+//  Produto formatado
+#define PRODUTO_CODIGO 0
+#define PRODUTO_NOME_FORMATADO ""
+#define PRODUTO_PRECO 0
+#define PRODUTO_REPOR 0
+#define PRODUTO_QUATIDADE 0
+#define PRODUTO_DESCRICAO ""
 
 /*  Variaveis */
 

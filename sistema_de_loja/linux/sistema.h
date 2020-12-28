@@ -10,12 +10,14 @@
 #include "historico.h"
 
 /*  Constantes */
+#define VARIAVEIL_CODIGO 0
+#define INFORMACAO_TAMANHO 100
 
 /*  Variaveis */
 int variavel_codigo;
 int tamanho_nome;
-char informacao1[100];
-char informacao2[100];
+char informacao1[INFORMACAO_TAMANHO];
+char informacao2[INFORMACAO_TAMANHO];
 Usuario usuario;
 Produto produto[PRODUTO_QUANTIDADE];
 Historico historico[HISTORICO_CAPACIDADE];
@@ -24,9 +26,11 @@ Historico historico[HISTORICO_CAPACIDADE];
 //  Menu principal
 enum menu_principal
 {
+    sair_login = -1,
     fechar_loja,
     login,
-    registrar
+    registrar,
+    opcao_invalida
 };
 //  Menu da loja
 enum menu_loja

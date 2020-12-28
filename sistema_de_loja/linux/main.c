@@ -36,11 +36,12 @@ int main()
                 break;
             default:
                 printf("Opcao invalida! \n");
+                opcao = opcao_invalida;
         }
         printf("Pressione enter para continuar... \n");
         getchar();
         system("clear");
-    }while(opcao != -1);
+    }while(opcao != sair_login);
 
     //  Formatando a lista antes do uso
     /*  formatar_lista(); Por motivos misteriosos o formatar ta zerando o dinheiro*/

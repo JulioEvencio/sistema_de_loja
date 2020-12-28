@@ -92,14 +92,14 @@ void formatar_lista(void)
     int i;
     for(i = 0; i <= PRODUTO_QUANTIDADE; i++)
     {
-        produto[i].codigo = 0;
-        strcpy(produto[i].nome, "");
-        produto[i].preco = 0;
-        produto[i].preco_repor = 0;
-        produto[i].quantidade = 0;
-        strcpy(historico[i].descricao, "");
+        produto[i].codigo = PRODUTO_CODIGO;
+        strcpy(produto[i].nome, PRODUTO_NOME_FORMATADO);
+        produto[i].preco = PRODUTO_PRECO;
+        produto[i].preco_repor = PRODUTO_REPOR;
+        produto[i].quantidade = PRODUTO_QUATIDADE;
+        strcpy(historico[i].descricao, PRODUTO_DESCRICAO);
     }
-    variavel_codigo = 0;
+    variavel_codigo = VARIAVEIL_CODIGO;
 }
 
 /*  Menu de login */
