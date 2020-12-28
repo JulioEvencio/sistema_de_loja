@@ -106,7 +106,7 @@ void localizar_produto(int posicao)
     if(posicao != -1)
     {
         printf("================ \n");
-        printf("Nome: %s", produto[posicao].nome);
+        printf("Nome: %s \n", produto[posicao].nome);
         printf("Codigo: %d \n", produto[posicao].codigo);
         printf("Preco: %.2f \n", produto[posicao].preco);
         printf("Preco para repor: %.2f \n", produto[posicao].preco_repor);

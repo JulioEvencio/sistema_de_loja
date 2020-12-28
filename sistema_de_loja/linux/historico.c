@@ -26,10 +26,15 @@ void descrever_historico(void)
         strcpy(historico[loop].descricao, historico[loop + 1].descricao);
     }
 
-    //  Retirando o /0 do nome
-    tamanho_nome = strlen(informacao1);
-    informacao1[tamanho_nome - 1] = ' ';
-    //  Concatenando os nomes no historico
-    strcat(informacao1, informacao2);
-    strcpy(historico[HISTORICO_CAPACIDADE - 1].descricao, informacao1);
+    /*
+        Com a funcao remove_enter nao e mais necessario retirar o /0
+        OBS: O quebra linha era devido ao '\n' (enter) que o fgets colocava na string
+        
+        //  Retirando o /0 do nome
+        tamanho_nome = strlen(informacao1);
+        informacao1[tamanho_nome - 1] = ' ';
+        //  Concatenando os nomes no historico
+        strcat(informacao1, informacao2);
+        strcpy(historico[HISTORICO_CAPACIDADE - 1].descricao, informacao1);
+    */
 }

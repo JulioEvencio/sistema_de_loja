@@ -31,7 +31,7 @@ int main()
             case(registrar):
                 registrar_usuario();
                 break;
-            case(fechar_loja):
+            case(fechar_menu):
                 printf("Obrigado por utilizar este programa! \n");
                 break;
             default:
@@ -47,7 +47,7 @@ int main()
     /*  formatar_lista(); Por motivos misteriosos o formatar ta zerando o dinheiro*/
 
     //  Loop do programa
-    while(opcao != fechar_loja)
+    while(opcao != fechar_menu)
     {
         //  Informacoes do usuario
         printf("========USUARIO======== \n");

@@ -27,7 +27,7 @@ Historico historico[HISTORICO_CAPACIDADE];
 enum menu_principal
 {
     sair_login = -1,
-    fechar_loja,
+    fechar_menu,
     login,
     registrar,
     opcao_invalida
