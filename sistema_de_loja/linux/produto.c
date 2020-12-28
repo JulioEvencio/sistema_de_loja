@@ -30,7 +30,7 @@ int gerador_de_codigo(void)
 int verificador_de_produto(void)
 {
     int codigo, loop;
-    char produto1[101];
+    char produto1[PRODUTO_NOME];
     printf("========LOCALIZANDO PRODUTO======== \n");
     printf("Procurar produto pelo: \n");
     printf("1. Nome \n");
@@ -43,7 +43,7 @@ int verificador_de_produto(void)
     {
         case(1):
             printf("Digite o nome do produto: ");
-            fgets(produto1, 101, stdin);
+            fgets(produto1, PRODUTO_NOME, stdin);
             setbuf(stdin, NULL);
             for(loop = 0; loop <= PRODUTO_QUANTIDADE; loop++)
             {

@@ -96,7 +96,7 @@ void formatar_lista(void)
         strcpy(produto[i].nome, PRODUTO_NOME_FORMATADO);
         produto[i].preco = PRODUTO_PRECO;
         produto[i].preco_repor = PRODUTO_REPOR;
-        produto[i].quantidade = PRODUTO_QUATIDADE;
+        produto[i].quantidade = PRODUTO_QUANTIDADE_FORMATAR;
         strcpy(historico[i].descricao, PRODUTO_DESCRICAO);
     }
     variavel_codigo = VARIAVEIL_CODIGO;
