@@ -11,6 +11,7 @@ struct Usuario {
     char login[USUSARIO_LOGIN];
     char senha[USUSARIO_SENHA];
     float capital;
+    Lista *usuarios;
 };
 typedef struct Usuario Usuario;
 

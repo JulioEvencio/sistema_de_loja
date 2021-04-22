@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lista.h"
-#include "produto.h"
+#include "../produto/produto.h"
 #include "loja.h"
 
 #define LOJA_CAPITAL_INICIAL 0
