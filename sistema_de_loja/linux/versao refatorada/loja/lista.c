@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "../produto/produto.h"
 #include "lista.h"
 
 #define LISTA_INICIO 1

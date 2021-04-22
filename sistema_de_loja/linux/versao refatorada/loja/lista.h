@@ -6,8 +6,6 @@
 #define LISTA_VAZIA -2
 #define LISTA_POSICAO_INEXISTENTE -3
 
-#include "../produto/produto.h"
-
 typedef struct Lista Lista;
 
 void lista_inicializar(Lista **lista);
