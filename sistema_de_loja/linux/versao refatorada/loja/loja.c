@@ -65,3 +65,27 @@ int loja_cadastrar_produto(Loja **loja) {
 
     return LOJA_SUCESSO;
 }
+
+int loja_listar_produtos(Loja **loja) {
+    system(LIMPAR_TELA);
+    puts("======== Listar Produtos ========");
+
+    if (estoque_vazio(&(*loja)->estoque)) {
+        puts("Estoque vazio!");
+    } else {
+        int tamanho = estoque_tamanho(&(*loja)->estoque);
+        Produto produto;
+
+        for (int i = 1; i <= tamanho; i++) {
+            estoque_obter_posicao(&(*loja)->estoque, &produto, i);
+            puts("=================================");
+            printf("Codigo: %d \n", produto.codigo);
+            printf("Nome: %s \n", produto.nome);
+            printf("Preco: %.2f \n", produto.preco);
+            printf("Quantidade: %d \n", produto.quantidade);
+            puts("=================================");
+        }
+    }
+
+    return LOJA_SUCESSO;
+}

@@ -12,5 +12,6 @@ typedef struct Loja Loja;
 int loja_inicializar(Loja **loja);
 void loja_liberar(Loja **loja);
 int loja_cadastrar_produto(Loja **loja);
+int loja_listar_produtos(Loja **loja);
 
 #endif
