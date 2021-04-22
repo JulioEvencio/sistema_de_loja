@@ -6,6 +6,8 @@ int main(void) {
 
     if (loja_inicializar(&loja)) return 1;
 
+    if (loja_cadastrar_produto(&loja)) return 2;
+
     loja_liberar(&loja);
 
     return 0;

@@ -3,6 +3,7 @@
 
 #define LOJA_SUCESSO 0
 #define LOJA_SEM_MEMORIA -1
+#define LOJA_CODIGO_INVALIDO -2
 
 #define LOJA_NOME_TAMANHO 21
 
@@ -10,5 +11,6 @@ typedef struct Loja Loja;
 
 int loja_inicializar(Loja **loja);
 void loja_liberar(Loja **loja);
+int loja_cadastrar_produto(Loja **loja);
 
 #endif

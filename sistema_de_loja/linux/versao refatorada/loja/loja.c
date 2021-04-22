@@ -19,6 +19,9 @@ int loja_inicializar(Loja **loja) {
 
     (*loja)->capital = LOJA_CAPITAL_INICIAL;
     
+    system(LIMPAR_TELA);
+    puts("======== Inicializando Loja ========");
+    
     printf("Nome da loja: ");
     ler_stdin((*loja)->nome, LOJA_NOME_TAMANHO);
 
@@ -30,4 +33,35 @@ int loja_inicializar(Loja **loja) {
 void loja_liberar(Loja **loja) {
     estoque_liberar(&(*loja)->estoque);
     free(*loja);
+}
+
+int loja_cadastrar_produto(Loja **loja) {
+    Produto produto;
+
+    system(LIMPAR_TELA);
+    puts("======== Cadastrar Produto ========");
+
+    printf("Codigo: ");
+    produto.codigo = (int) ler_stdin(buffer, BUFFER_TAMANHO);
+
+    if (produto.codigo == -1) {
+        puts("Codigo invalido!");
+        return LOJA_CODIGO_INVALIDO;
+    }
+
+    printf("Nome: ");
+    ler_stdin(produto.nome, ESTOQUE_PRODUTO_NOME);
+
+    printf("Preco: ");
+    produto.preco = ler_stdin(buffer, BUFFER_TAMANHO);
+
+    produto.quantidade = 0;
+
+    if (estoque_adicionar_final(&(*loja)->estoque, &produto)) {
+        return LOJA_SEM_MEMORIA;
+    }
+
+    puts("Produto cadastrado com sucesso!");
+
+    return LOJA_SUCESSO;
 }
