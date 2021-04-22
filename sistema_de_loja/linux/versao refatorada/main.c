@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include "loja/loja.h"
 
 int main(void) {
-    printf("Hello, world!");
+    //  Code
 
     return 0;
 }
