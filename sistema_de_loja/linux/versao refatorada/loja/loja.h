@@ -1,15 +1,14 @@
 #ifndef LOJA_H_INCLUDED
 #define LOJA_H_INCLDUED
 
+#define LOJA_SUCESSO 0
+#define LOJA_SEM_MEMORIA -1
+
 #define LOJA_NOME_TAMANHO 21
 
-#include "../produto/produto.h"
-
-struct Loja {
-    float capital;
-    char nome[LOJA_NOME_TAMANHO];
-    Produto produto;
-};
 typedef struct Loja Loja;
+
+int loja_inicializar(Loja **loja);
+void loja_liberar(Loja **loja);
 
 #endif

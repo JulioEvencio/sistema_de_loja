@@ -2,7 +2,11 @@
 #include "loja/loja.h"
 
 int main(void) {
-    //  Code
+    Loja *loja = NULL;;
+
+    if (loja_inicializar(&loja)) return 1;
+
+    loja_liberar(&loja);
 
     return 0;
 }
