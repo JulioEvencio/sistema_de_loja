@@ -16,7 +16,7 @@ float ler_stdin(char *nome, int tamanho) {
 
     while ((letra = getchar()) != '\n') {
         if (letra != '\n' && i < tamanho - 1) {
-            if (letra < '0' || letra > '9') tem_letra = 1;
+            if ((letra < '0' || letra > '9') && letra != '.') tem_letra = 1;
             *(nome + i) = letra;
             i++;
         }

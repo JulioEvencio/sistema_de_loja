@@ -54,7 +54,6 @@ int loja_cadastrar_produto(Loja **loja) {
 
     printf("Preco: ");
     produto.preco = (float) ler_stdin(buffer, BUFFER_TAMANHO);
-    printf("Teste: %.2f \n", produto.preco);
 
     produto.quantidade = 0;
 
