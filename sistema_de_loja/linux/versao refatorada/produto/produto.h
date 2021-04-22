@@ -7,7 +7,6 @@ struct Produto {
     int codigo;
     char nome[PRODUTO_NOME];
     float preco;
-    float preco_repor;
     int quantidade;
 };
 typedef struct Produto Produto;
