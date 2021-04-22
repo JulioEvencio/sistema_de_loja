@@ -6,6 +6,7 @@ int main(void) {
     Loja *loja = NULL;;
 
     if (loja_inicializar(&loja)) return 1;
+    pausar_tela();
 
     if (loja_cadastrar_produto(&loja)) {
         puts("Erro ao adicionar produto!");

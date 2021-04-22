@@ -70,7 +70,7 @@ int estoque_adicionar_posicao(Estoque **estoque, Produto *produto, int posicao) 
     } else {
         Nodo *nodo_anterior = NULL, *nodo_atual = *estoque;
 
-        for (int i = ESTOQUE_INICIO; i <= posicao; i++) {
+        for (int i = ESTOQUE_INICIO; i < posicao; i++) {
             nodo_anterior = nodo_atual;
             nodo_atual = nodo_atual->proximo;
         }
@@ -132,7 +132,7 @@ int estoque_remover_posicao(Estoque **estoque, int posicao) {
     } else {
         Nodo *auxiliar = NULL;
 
-        for (int i = ESTOQUE_INICIO; i <= posicao; i++) {
+        for (int i = ESTOQUE_INICIO; i < posicao; i++) {
             auxiliar = nodo;
             nodo = nodo->proximo;
         }
@@ -184,7 +184,7 @@ int estoque_alterar_posicao(Estoque **estoque, Produto *produto, int posicao) {
         return ESTOQUE_POSICAO_INEXISTENTE;
     }
 
-    for (int i = ESTOQUE_INICIO; i <= posicao; i++) {
+    for (int i = ESTOQUE_INICIO; i < posicao; i++) {
         nodo = nodo->proximo;
     }
 
@@ -224,7 +224,7 @@ int estoque_obter_posicao(Estoque **estoque, Produto *produto, int posicao) {
         return ESTOQUE_POSICAO_INEXISTENTE;
     }
 
-    for (int i = ESTOQUE_INICIO; i <= posicao; i++) {
+    for (int i = ESTOQUE_INICIO; i < posicao; i++) {
         nodo = nodo->proximo;
     }
 

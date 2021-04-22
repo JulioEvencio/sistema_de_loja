@@ -53,7 +53,8 @@ int loja_cadastrar_produto(Loja **loja) {
     ler_stdin(produto.nome, ESTOQUE_PRODUTO_NOME);
 
     printf("Preco: ");
-    produto.preco = ler_stdin(buffer, BUFFER_TAMANHO);
+    produto.preco = (float) ler_stdin(buffer, BUFFER_TAMANHO);
+    printf("Teste: %.2f \n", produto.preco);
 
     produto.quantidade = 0;
 
@@ -73,11 +74,18 @@ int loja_listar_produtos(Loja **loja) {
     if (estoque_vazio(&(*loja)->estoque)) {
         puts("Estoque vazio!");
     } else {
+        int erro;
         int tamanho = estoque_tamanho(&(*loja)->estoque);
         Produto produto;
 
         for (int i = 1; i <= tamanho; i++) {
-            estoque_obter_posicao(&(*loja)->estoque, &produto, i);
+            erro = estoque_obter_posicao(&(*loja)->estoque, &produto, i);
+
+            if (erro == ESTOQUE_POSICAO_INEXISTENTE) {
+                puts("Posicao nao existe");
+                pausar_tela();
+            }
+
             puts("=================================");
             printf("Codigo: %d \n", produto.codigo);
             printf("Nome: %s \n", produto.nome);
