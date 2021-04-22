@@ -6,12 +6,6 @@
 
 #define LOJA_CAPITAL_INICIAL 0
 
-struct Loja {
-    float capital;
-    Lista *estoque;
-    //  Usuario
-};
-
 int loja_criar(Loja **loja) {
     *loja = malloc(sizeof **loja);
 

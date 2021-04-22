@@ -6,7 +6,7 @@
 #define LISTA_VAZIA -2
 #define LISTA_POSICAO_INEXISTENTE -3
 
-#include "produto.h"
+#include "../produto/produto.h"
 
 typedef struct Lista Lista;
 
