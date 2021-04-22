@@ -1,12 +1,7 @@
 #include <stdio.h>
-#include "loja/loja.h"
 
 int main(void) {
-    Loja *loja;
-
-    if (loja_criar(&loja)) return -1;
-
-    loja_liberar(&loja);
+    printf("Hello, world!");
 
     return 0;
 }
