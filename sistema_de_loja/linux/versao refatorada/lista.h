@@ -6,10 +6,7 @@
 #define LISTA_VAZIA -2
 #define LISTA_POSICAO_INEXISTENTE -3
 
-struct Elemento {
-    int x;
-};
-typedef struct Elemento Elemento;
+#include "produto.h"
 
 typedef struct Lista Lista;
 
