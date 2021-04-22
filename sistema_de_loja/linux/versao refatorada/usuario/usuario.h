@@ -5,6 +5,9 @@
 #define USUSARIO_LOGIN 16
 #define USUSARIO_SENHA 16
 
+#define USUARIO_SUCESSO 0
+#define USUARIO_SEM_MEMORIA -1
+
 struct Usuario {
     int id;
     char nome[USUARIO_NOME];
