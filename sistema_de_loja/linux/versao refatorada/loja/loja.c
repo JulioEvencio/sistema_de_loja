@@ -108,7 +108,7 @@ int loja_alterar_produto(Loja **loja) {
         int tamanho = estoque_tamanho(&(*loja)->estoque);
         Produto produto;
 
-        printf("Codigo:");
+        printf("Codigo: ");
         codigo = (int) ler_stdin(buffer, BUFFER_TAMANHO);
 
         for (int i = 1; i <= tamanho; i++) {
@@ -145,7 +145,7 @@ int loja_remover_produto(Loja **loja) {
         int tamanho = estoque_tamanho(&(*loja)->estoque);
         Produto produto;
 
-        printf("Codigo:");
+        printf("Codigo: ");
         codigo = (int) ler_stdin(buffer, BUFFER_TAMANHO);
 
         for (int i = 1; i <= tamanho; i++) {
