@@ -13,13 +13,8 @@ int main(void) {
     }
     pausar_tela();
 
-    if (loja_cadastrar_produto(&loja)) {
-        puts("Erro ao adicionar produto!");
-    }
-    pausar_tela();
-
-    if (loja_cadastrar_produto(&loja)) {
-        puts("Erro ao adicionar produto!");
+    if (loja_alterar_produto(&loja)) {
+        puts("Erro ao alterar produto!");
     }
     pausar_tela();
 
