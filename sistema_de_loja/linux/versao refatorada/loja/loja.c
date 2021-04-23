@@ -133,3 +133,34 @@ int loja_alterar_produto(Loja **loja) {
 
     return LOJA_SUCESSO;
 }
+
+int loja_remover_produto(Loja **loja) {
+    system(LIMPAR_TELA);
+    puts("======== Remover Produto ========");
+
+    if (estoque_vazio(&(*loja)->estoque)) {
+        puts("Estoque vazio!");
+    } else {
+        int codigo;
+        int tamanho = estoque_tamanho(&(*loja)->estoque);
+        Produto produto;
+
+        printf("Codigo:");
+        codigo = (int) ler_stdin(buffer, BUFFER_TAMANHO);
+
+        for (int i = 1; i <= tamanho; i++) {
+            if (estoque_obter_posicao(&(*loja)->estoque, &produto, i)) return -1;
+
+            if (codigo == produto.codigo) {
+                if (estoque_remover_posicao(&(*loja)->estoque, i)) return -1;
+
+                puts("Produto removido com sucesso!");
+                return LOJA_SUCESSO;
+            }
+        }
+
+        puts("Produto nao encontrado");
+    }
+
+    return LOJA_SUCESSO;
+}

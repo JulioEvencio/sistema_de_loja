@@ -18,6 +18,11 @@ int main(void) {
     }
     pausar_tela();
 
+    if (loja_remover_produto(&loja)) {
+        puts("Erro ao remover produto!");
+    }
+    pausar_tela();
+
     if (loja_listar_produtos(&loja)) return 2;;
 
     loja_liberar(&loja);
