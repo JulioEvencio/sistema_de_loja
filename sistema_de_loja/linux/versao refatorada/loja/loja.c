@@ -164,3 +164,49 @@ int loja_remover_produto(Loja **loja) {
 
     return LOJA_SUCESSO;
 }
+
+int loja_vender_produto(Loja **loja) {
+    system(LIMPAR_TELA);
+    puts("======== Vender Produto ========");
+
+    if (estoque_vazio(&(*loja)->estoque)) {
+        puts("Estoque vazio!");
+    } else {
+        int codigo;
+        int tamanho = estoque_tamanho(&(*loja)->estoque);
+        Produto produto;
+
+        printf("Codigo: ");
+        codigo = (int) ler_stdin(buffer, BUFFER_TAMANHO);
+
+        for (int i = 1; i <= tamanho; i++) {
+            if (estoque_obter_posicao(&(*loja)->estoque, &produto, i)) return -1;
+
+            if (codigo == produto.codigo) {
+                int quantidade;
+
+                printf("Quantidade: ");
+                quantidade = (int) ler_stdin(buffer, BUFFER_TAMANHO);
+
+                if (produto.quantidade <= quantidade && quantidade > 0) {
+                    produto.quantidade -= quantidade;
+
+                    if (estoque_alterar_posicao(&(*loja)->estoque, &produto, i)) return -1;
+
+                    (*loja)->capital += quantidade * produto.preco;
+
+                    puts("Produto vendido com sucesso!");
+
+                    return LOJA_SUCESSO;
+                } else {
+                    puts("Quantidade invalida!");
+                    return -1;
+                }
+            }
+        }
+
+        puts("Produto nao encontrado");
+    }
+
+    return LOJA_SUCESSO;
+}

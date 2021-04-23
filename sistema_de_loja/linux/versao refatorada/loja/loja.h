@@ -15,5 +15,6 @@ int loja_cadastrar_produto(Loja **loja);
 int loja_listar_produtos(Loja **loja);
 int loja_alterar_produto(Loja **loja);
 int loja_remover_produto(Loja **loja);
+int loja_vender_produto(Loja **loja);
 
 #endif
