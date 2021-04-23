@@ -13,13 +13,13 @@ int main(void) {
     }
     pausar_tela();
 
-    if (loja_alterar_produto(&loja)) {
-        puts("Erro ao alterar produto!");
+    if (loja_repor_produto(&loja)) {
+        puts("Erro ao repor produto!");
     }
     pausar_tela();
 
-    if (loja_remover_produto(&loja)) {
-        puts("Erro ao remover produto!");
+    if (loja_vender_produto(&loja)) {
+        puts("Erro ao vender produto!");
     }
     pausar_tela();
 

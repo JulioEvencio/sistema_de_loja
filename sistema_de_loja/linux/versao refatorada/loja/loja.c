@@ -188,7 +188,7 @@ int loja_vender_produto(Loja **loja) {
                 printf("Quantidade: ");
                 quantidade = (int) ler_stdin(buffer, BUFFER_TAMANHO);
 
-                if (produto.quantidade <= quantidade && quantidade > 0) {
+                if (quantidade > 0 && quantidade <= produto.quantidade) {
                     produto.quantidade -= quantidade;
 
                     if (estoque_alterar_posicao(&(*loja)->estoque, &produto, i)) return -1;
