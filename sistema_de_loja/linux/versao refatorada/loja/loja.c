@@ -42,7 +42,7 @@ int loja_relatorio(Loja **loja) {
     puts("======== Relatorio ========");
 
     printf("Nome da loja: %s \n", (*loja)->nome);
-    printf("Capital: %.2f", (*loja)->capital);
+    printf("Capital: %.2f \n", (*loja)->capital);
 
     return 0;
 }
