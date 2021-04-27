@@ -35,6 +35,18 @@ void loja_liberar(Loja **loja) {
     free(*loja);
 }
 
+int loja_relatorio(Loja **loja) {
+    if (*loja == NULL) return -1;
+    
+    system(LIMPAR_TELA);
+    puts("======== Relatorio ========");
+
+    printf("Nome da loja: %s \n", (*loja)->nome);
+    printf("Capital: %.2f", (*loja)->capital);
+
+    return 0;
+}
+
 int loja_cadastrar_produto(Loja **loja) {
     Produto produto;
 
