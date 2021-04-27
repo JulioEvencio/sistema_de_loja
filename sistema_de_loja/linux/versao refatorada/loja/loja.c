@@ -18,10 +18,10 @@ int loja_inicializar(Loja **loja) {
     if (*loja == NULL) return LOJA_SEM_MEMORIA;
 
     (*loja)->capital = LOJA_CAPITAL_INICIAL;
-    
+
     system(LIMPAR_TELA);
     puts("======== Inicializando Loja ========");
-    
+
     printf("Nome da loja: ");
     ler_stdin((*loja)->nome, LOJA_NOME_TAMANHO);
 

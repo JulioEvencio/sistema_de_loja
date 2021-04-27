@@ -3,31 +3,21 @@
 #include "loja/loja.h"
 
 int main(void) {
-    Loja *loja = NULL;;
+    int loop;
+    Loja *loja = NULL;
 
-    if (loja_inicializar(&loja)) return 1;
-    pausar_tela();
-
-    if (loja_cadastrar_produto(&loja)) {
-        puts("Erro ao adicionar produto!");
+    if (loja_inicializar(&loja)) {
+        puts("Erro ao inicializar loja");
+        return 1;
     }
-    pausar_tela();
 
-    if (loja_repor_produto(&loja)) {
-        puts("Erro ao repor produto!");
-    }
-    pausar_tela();
+    do {
+        imprimir_menu(&loop);
 
-    if (loja_vender_produto(&loja)) {
-        puts("Erro ao vender produto!");
-    }
-    pausar_tela();
-
-    if (loja_listar_produtos(&loja)) return 2;;
+        //
+    } while (loop);
 
     loja_liberar(&loja);
-
-    puts("Programa funcionou com sucesso");
 
     return 0;
 }
