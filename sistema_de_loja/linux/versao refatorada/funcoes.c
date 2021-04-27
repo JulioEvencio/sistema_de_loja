@@ -34,12 +34,13 @@ int imprimir_menu(int *opcao) {
 	system(LIMPAR_TELA);
     puts("======== Menu ========");
 
-    puts("1. Listar Produtos");
-    puts("2. Cadastrar Produto");
-    puts("3. Alterar Produto");
-    puts("4. Remover Produto");
-    puts("5. Vender Produto");
-    puts("6. Repor Produto");
+    puts("1. Relatorio");
+    puts("2. Listar Produtos");
+    puts("3. Cadastrar Produto");
+    puts("4. Alterar Produto");
+    puts("5. Remover Produto");
+    puts("6. Vender Produto");
+    puts("7. Repor Produto");
     puts("0. Sair");
 
     *opcao = (int) ler_stdin(buffer, BUFFER_TAMANHO);
