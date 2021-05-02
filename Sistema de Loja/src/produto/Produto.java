@@ -4,11 +4,13 @@ public class Produto {
     private int codigo;
     private String nome;
     private double preco;
+    private int quantidade;
 
     public Produto(int codigo, String nome, double preco) {
         this.codigo = codigo;
         this.nome = nome;
         this.preco = preco;
+        this.quantidade = 0;
     }
 
     public int getCodigo() {
@@ -33,5 +35,13 @@ public class Produto {
 
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 }
