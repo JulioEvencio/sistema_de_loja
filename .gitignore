@@ -50,3 +50,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+/Sistema de Loja/nbproject/private/
+/Sistema de Loja/build/
