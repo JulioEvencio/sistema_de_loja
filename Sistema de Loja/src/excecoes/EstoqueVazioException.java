@@ -1,4 +1,4 @@
-package execoes;
+package excecoes;
 
 public class EstoqueVazioException extends Exception {
     public EstoqueVazioException() {
