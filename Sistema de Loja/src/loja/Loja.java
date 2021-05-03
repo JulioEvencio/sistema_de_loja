@@ -1,6 +1,9 @@
 package loja;
 
 import produto.Produto;
+import excecoes.CodigoInvalidoException;
+import excecoes.EstoqueVazioException;
+import excecoes.QuantidadeInvalidaException;
 import java.util.HashMap;
 
 public class Loja {
@@ -30,38 +33,38 @@ public class Loja {
         this.capital = capital;
     }
 
-    public void cadastrarProduto(int codigo, String nome, double preco) {
+    public void cadastrarProduto(int codigo, String nome, double preco) throws CodigoInvalidoException {
         Produto produto = new Produto(codigo, nome, preco);
 
-        if (estoque.containsKey(codigo)) throw new RuntimeException();
+        if (estoque.containsKey(codigo)) throw new CodigoInvalidoException();
 
         estoque.put(codigo, produto);
     }
 
-    public Produto localizarProduto(int codigo) {
-        if (estoque.isEmpty()) throw new RuntimeException();
-        if (!estoque.containsKey(codigo)) throw new RuntimeException();
+    public Produto localizarProduto(int codigo) throws EstoqueVazioException, CodigoInvalidoException {
+        if (estoque.isEmpty()) throw new EstoqueVazioException();
+        if (!estoque.containsKey(codigo)) throw new CodigoInvalidoException();
 
         return estoque.get(codigo);
     }
 
-    public void removerProduto(int codigo) {
-        if (estoque.isEmpty()) throw new RuntimeException();
-        if (!estoque.containsKey(codigo)) throw new RuntimeException();
+    public void removerProduto(int codigo) throws EstoqueVazioException, CodigoInvalidoException {
+        if (estoque.isEmpty()) throw new EstoqueVazioException();
+        if (!estoque.containsKey(codigo)) throw new CodigoInvalidoException();
 
         estoque.remove(codigo);
     }
 
-    public double venderProduto(int codigo, int quantidade) {
+    public double venderProduto(int codigo, int quantidade) throws EstoqueVazioException, CodigoInvalidoException, QuantidadeInvalidaException {
         Produto produto;
 
-        if (estoque.isEmpty()) throw new RuntimeException();
-        if (!estoque.containsKey(codigo)) throw new RuntimeException();
-        if (quantidade < 1) throw new RuntimeException();
+        if (estoque.isEmpty()) throw new EstoqueVazioException();
+        if (!estoque.containsKey(codigo)) throw new CodigoInvalidoException();
+        if (quantidade < 1) throw new QuantidadeInvalidaException();
 
         produto = estoque.get(codigo);
 
-        if (produto.getQuantidade() < quantidade) throw new RuntimeException();
+        if (produto.getQuantidade() < quantidade) throw new QuantidadeInvalidaException();
 
         produto.setQuantidade(produto.getQuantidade() - quantidade);
 
@@ -72,12 +75,12 @@ public class Loja {
         return produto.getPreco() * quantidade;
     }
 
-    public void reporProduto(int codigo, int quantidade) {
+    public void reporProduto(int codigo, int quantidade) throws EstoqueVazioException, CodigoInvalidoException, QuantidadeInvalidaException {
         Produto produto;
 
-        if (estoque.isEmpty()) throw new RuntimeException();
-        if (!estoque.containsKey(codigo)) throw new RuntimeException();
-        if (quantidade < 1) throw new RuntimeException();
+        if (estoque.isEmpty()) throw new EstoqueVazioException();
+        if (!estoque.containsKey(codigo)) throw new CodigoInvalidoException();
+        if (quantidade < 1) throw new QuantidadeInvalidaException();
 
         produto = estoque.get(codigo);
         produto.setQuantidade(produto.getQuantidade() + quantidade);
