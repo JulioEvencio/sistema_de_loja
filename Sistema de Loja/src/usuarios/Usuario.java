@@ -29,6 +29,12 @@ public final class Usuario {
         return senha;
     }
 
+    public Loja getLoja(int codigo) throws CodigoInvalidoException {
+        if (!lojas.containsKey(codigo)) throw new CodigoInvalidoException();
+
+        return lojas.get(codigo);
+    }
+
     public boolean validarLogin(String login, String senha) {
         if (this.login.equals(login) && this.senha.equals(senha)) return true;
         else return false;
