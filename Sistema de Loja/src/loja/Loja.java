@@ -7,11 +7,13 @@ import excecoes.QuantidadeInvalidaException;
 import java.util.HashMap;
 
 public class Loja {
+    int codigo;
     private String nome;
     private double capital;
     private final HashMap<Integer, Produto> estoque;
 
-    public Loja(String nome, double capital) {
+    public Loja(int codigo, String nome, double capital) {
+        this.codigo = codigo;
         this.nome = nome;
         this.capital = capital;
         this.estoque = new HashMap<>();
