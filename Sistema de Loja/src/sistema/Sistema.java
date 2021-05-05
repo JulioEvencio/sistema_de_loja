@@ -2,6 +2,7 @@ package sistema;
 
 import usuarios.Usuario;
 import excecoes.LoginInvalidoException;
+import excecoes.CodigoInvalidoException;
 import java.util.HashMap;
 
 public class Sistema {
@@ -33,5 +34,9 @@ public class Sistema {
 
     public static void resetarUsuario() {
         usuario = null;
+    }
+
+    public static void criarLoja(int codigo, String nome, double capital) throws CodigoInvalidoException {
+        usuario.criarLoja(codigo, nome, capital);
     }
 }

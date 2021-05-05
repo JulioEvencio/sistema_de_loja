@@ -18,7 +18,7 @@ public class MenuUsuario extends javax.swing.JFrame {
         btnAbrirLoja = new javax.swing.JButton();
         btnDeletarLoja = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Loja");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -91,7 +91,8 @@ public class MenuUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCriarNovaLojaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarNovaLojaActionPerformed
-        // Evento 1
+        new CriarLoja().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnCriarNovaLojaActionPerformed
 
     private void btnAbrirLojaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirLojaActionPerformed
@@ -103,8 +104,7 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDeletarLojaActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        Sistema.resetarUsuario();
-        new Login().setVisible(true);
+        // Code
     }//GEN-LAST:event_formWindowClosed
 
     public static void main(String args[]) {
