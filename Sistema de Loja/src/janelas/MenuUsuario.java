@@ -96,7 +96,8 @@ public class MenuUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCriarNovaLojaActionPerformed
 
     private void btnAbrirLojaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirLojaActionPerformed
-        // Evento 2
+        new AbrirLoja().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnAbrirLojaActionPerformed
 
     private void btnDeletarLojaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarLojaActionPerformed

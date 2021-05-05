@@ -35,6 +35,18 @@ public final class Usuario {
         return lojas.get(codigo);
     }
 
+    public int[] getCodigoLoja() {
+        int indice = 0;
+        int[] codigo = new int[lojas.size()];
+
+        for (int chave: lojas.keySet()) {
+            codigo[indice] = chave;
+            indice++;
+        }
+
+        return codigo;
+    }
+
     public boolean validarLogin(String login, String senha) {
         if (this.login.equals(login) && this.senha.equals(senha)) return true;
         else return false;

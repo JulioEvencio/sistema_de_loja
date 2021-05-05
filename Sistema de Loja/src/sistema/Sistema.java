@@ -13,6 +13,10 @@ public class Sistema {
         return usuario.getNome();
     }
 
+    public static int[] getCodigoLojas() {
+        return usuario.getCodigoLoja();
+    }
+
     public static void cadastrarUsuario(String nome, String login, String senha) throws LoginInvalidoException {
         if (cadastro.containsKey(login)) throw new LoginInvalidoException();
 
