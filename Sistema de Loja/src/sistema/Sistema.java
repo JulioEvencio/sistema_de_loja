@@ -43,4 +43,8 @@ public class Sistema {
     public static void criarLoja(int codigo, String nome, double capital) throws CodigoInvalidoException {
         usuario.criarLoja(codigo, nome, capital);
     }
+
+    public static void deletarLoja(int codigo) throws CodigoInvalidoException {
+        usuario.deletarLoja(codigo);
+    }
 }
