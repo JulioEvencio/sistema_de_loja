@@ -43,16 +43,17 @@ public class Loja {
         relatorio += "\nNome: " + this.getNome();
         relatorio += "\nCapital: " + this.capital;
         relatorio += "\n---------------------------";
-        relatorio += "\n---------------------------";
         relatorio += "\n--------- Produtos --------";
 
         for (int chave: estoque.keySet()) {
             produto = estoque.get(chave);
-            
+
+            relatorio += "\n\n\n---------------------------\n\n";
             relatorio += "\nCódigo: " + produto.getCodigo();
             relatorio += "\nNome: " + produto.getNome();
             relatorio += "\nPreço: " + produto.getPreco();
             relatorio += "\nQuantidade: " + produto.getQuantidade();
+            relatorio += "\n\n\n---------------------------\n\n";
         }
 
         return relatorio;

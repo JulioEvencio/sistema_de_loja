@@ -57,4 +57,8 @@ public class Sistema {
     public static void abrirLoja(int codigo) throws CodigoInvalidoException {
         loja = usuario.getLoja(codigo);
     }
+
+    public static void cadastrarProduto(int codigo, String nome, double preco) throws CodigoInvalidoException {
+        loja.cadastrarProduto(codigo, nome, preco);
+    }
 }

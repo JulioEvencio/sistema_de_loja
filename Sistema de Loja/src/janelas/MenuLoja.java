@@ -35,6 +35,11 @@ public class MenuLoja extends javax.swing.JFrame {
 
         btnCadastrarProduto.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
         btnCadastrarProduto.setText("Cadastrar Produto");
+        btnCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarProdutoActionPerformed(evt);
+            }
+        });
 
         btnLocalizarProduto.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
         btnLocalizarProduto.setText("Localizar Produto");
@@ -90,6 +95,11 @@ public class MenuLoja extends javax.swing.JFrame {
         new Relatorio().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnRelatorioActionPerformed
+
+    private void btnCadastrarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarProdutoActionPerformed
+        new CadastrarProduto().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCadastrarProdutoActionPerformed
 
     public static void main(String args[]) {
         try {
