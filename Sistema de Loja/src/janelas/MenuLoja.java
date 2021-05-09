@@ -27,6 +27,11 @@ public class MenuLoja extends javax.swing.JFrame {
 
         btnRelatorio.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
         btnRelatorio.setText("Relatório");
+        btnRelatorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelatorioActionPerformed(evt);
+            }
+        });
 
         btnCadastrarProduto.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
         btnCadastrarProduto.setText("Cadastrar Produto");
@@ -80,6 +85,11 @@ public class MenuLoja extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorioActionPerformed
+        new Relatorio().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRelatorioActionPerformed
 
     public static void main(String args[]) {
         try {

@@ -7,7 +7,7 @@ import excecoes.QuantidadeInvalidaException;
 import java.util.HashMap;
 
 public class Loja {
-    int codigo;
+    private int codigo;
     private String nome;
     private double capital;
     private final HashMap<Integer, Produto> estoque;
@@ -33,6 +33,29 @@ public class Loja {
 
     public void setCapital(double capital) {
         this.capital = capital;
+    }
+
+    public String getRelatorio() {
+        Produto produto;
+        String relatorio = "-------- Relatório --------";
+
+        relatorio += "\nCódigo: " + this.codigo;
+        relatorio += "\nNome: " + this.getNome();
+        relatorio += "\nCapital: " + this.capital;
+        relatorio += "\n---------------------------";
+        relatorio += "\n---------------------------";
+        relatorio += "\n--------- Produtos --------";
+
+        for (int chave: estoque.keySet()) {
+            produto = estoque.get(chave);
+            
+            relatorio += "\nCódigo: " + produto.getCodigo();
+            relatorio += "\nNome: " + produto.getNome();
+            relatorio += "\nPreço: " + produto.getPreco();
+            relatorio += "\nQuantidade: " + produto.getQuantidade();
+        }
+
+        return relatorio;
     }
 
     public void cadastrarProduto(int codigo, String nome, double preco) throws CodigoInvalidoException {

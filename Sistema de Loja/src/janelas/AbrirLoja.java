@@ -1,8 +1,11 @@
 package janelas;
 
 import sistema.Sistema;
+import excecoes.CodigoInvalidoException;
+import javax.swing.JOptionPane;
 
 public class AbrirLoja extends javax.swing.JFrame {
+    boolean abrirLoja = false;
 
     public AbrirLoja() {
         initComponents();
@@ -78,12 +81,21 @@ public class AbrirLoja extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirActionPerformed
-        new MenuLoja().setVisible(true);
-        this.dispose();
+        try {
+            Integer codigo = Integer.parseInt((String) cmbLoja.getSelectedItem());
+            Sistema.abrirLoja(codigo);
+            new MenuLoja().setVisible(true);
+            abrirLoja = true;
+            this.dispose();
+        } catch (CodigoInvalidoException e) {
+            JOptionPane.showMessageDialog(rootPane, "Erro ao abrir Loja!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione uma opção!");
+        }
     }//GEN-LAST:event_btnAbrirActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        new MenuUsuario().setVisible(true);
+        if (!abrirLoja) new MenuUsuario().setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
     public static void main(String args[]) {
